@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		C51EBC4826CB4C630011E8B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC4726CB4C630011E8B5 /* AppDelegate.swift */; };
 		C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC4926CB4C630011E8B5 /* SceneDelegate.swift */; };
-		C51EBC4C26CB4C630011E8B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC4B26CB4C630011E8B5 /* ViewController.swift */; };
 		C51EBC4F26CB4C630011E8B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC4D26CB4C630011E8B5 /* Main.storyboard */; };
 		C51EBC5126CB4C670011E8B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC5026CB4C670011E8B5 /* Assets.xcassets */; };
 		C51EBC5426CB4C670011E8B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC5226CB4C670011E8B5 /* LaunchScreen.storyboard */; };
+		C51EBC5C26CB523D0011E8B5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC5B26CB523D0011E8B5 /* Meal.swift */; };
+		C51EBC5E26CB524E0011E8B5 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC5D26CB524E0011E8B5 /* ModelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C51EBC4426CB4C630011E8B5 /* FreeMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51EBC4726CB4C630011E8B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C51EBC4926CB4C630011E8B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C51EBC4B26CB4C630011E8B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C51EBC4E26CB4C630011E8B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C51EBC5026CB4C670011E8B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C51EBC5326CB4C670011E8B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C51EBC5526CB4C670011E8B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C51EBC5B26CB523D0011E8B5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		C51EBC5D26CB524E0011E8B5 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,56 @@
 		C51EBC4626CB4C630011E8B5 /* FreeMeals */ = {
 			isa = PBXGroup;
 			children = (
-				C51EBC4726CB4C630011E8B5 /* AppDelegate.swift */,
-				C51EBC4926CB4C630011E8B5 /* SceneDelegate.swift */,
-				C51EBC4B26CB4C630011E8B5 /* ViewController.swift */,
-				C51EBC4D26CB4C630011E8B5 /* Main.storyboard */,
-				C51EBC5026CB4C670011E8B5 /* Assets.xcassets */,
-				C51EBC5226CB4C670011E8B5 /* LaunchScreen.storyboard */,
-				C51EBC5526CB4C670011E8B5 /* Info.plist */,
+				C51EBC6026CB525C0011E8B5 /* Application */,
+				C51EBC6226CB526B0011E8B5 /* Model */,
+				C51EBC6326CB52700011E8B5 /* ModelController */,
+				C51EBC6426CB52810011E8B5 /* Storyboards */,
+				C51EBC6526CB53860011E8B5 /* Resources */,
 			);
 			path = FreeMeals;
+			sourceTree = "<group>";
+		};
+		C51EBC6026CB525C0011E8B5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C51EBC4726CB4C630011E8B5 /* AppDelegate.swift */,
+				C51EBC4926CB4C630011E8B5 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C51EBC6226CB526B0011E8B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C51EBC5B26CB523D0011E8B5 /* Meal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C51EBC6326CB52700011E8B5 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				C51EBC5D26CB524E0011E8B5 /* ModelController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		C51EBC6426CB52810011E8B5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C51EBC4D26CB4C630011E8B5 /* Main.storyboard */,
+				C51EBC5226CB4C670011E8B5 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C51EBC6526CB53860011E8B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C51EBC5026CB4C670011E8B5 /* Assets.xcassets */,
+				C51EBC5526CB4C670011E8B5 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +180,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C51EBC4C26CB4C630011E8B5 /* ViewController.swift in Sources */,
 				C51EBC4826CB4C630011E8B5 /* AppDelegate.swift in Sources */,
+				C51EBC5E26CB524E0011E8B5 /* ModelController.swift in Sources */,
+				C51EBC5C26CB523D0011E8B5 /* Meal.swift in Sources */,
 				C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDC2MPU893;
-				INFOPLIST_FILE = FreeMeals/Info.plist;
+				INFOPLIST_FILE = "/Users/Bharat_Kumar/Documents/iOS FetchRewards/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +351,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDC2MPU893;
-				INFOPLIST_FILE = FreeMeals/Info.plist;
+				INFOPLIST_FILE = "/Users/Bharat_Kumar/Documents/iOS FetchRewards/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
