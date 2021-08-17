@@ -14,6 +14,9 @@
 		C51EBC5426CB4C670011E8B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC5226CB4C670011E8B5 /* LaunchScreen.storyboard */; };
 		C51EBC5C26CB523D0011E8B5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC5B26CB523D0011E8B5 /* Meal.swift */; };
 		C51EBC5E26CB524E0011E8B5 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC5D26CB524E0011E8B5 /* ModelController.swift */; };
+		C51EBC6826CB56340011E8B5 /* FreeMeals.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC6626CB56340011E8B5 /* FreeMeals.xcdatamodeld */; };
+		C51EBC6B26CB56690011E8B5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC6A26CB56690011E8B5 /* CoreDataStack.swift */; };
+		C51EBC6E26CB56AD0011E8B5 /* Meal+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC6D26CB56AD0011E8B5 /* Meal+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		C51EBC5526CB4C670011E8B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C51EBC5B26CB523D0011E8B5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		C51EBC5D26CB524E0011E8B5 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		C51EBC6726CB56340011E8B5 /* FreeMeals.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FreeMeals.xcdatamodel; sourceTree = "<group>"; };
+		C51EBC6A26CB56690011E8B5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		C51EBC6D26CB56AD0011E8B5 /* Meal+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				C51EBC5B26CB523D0011E8B5 /* Meal.swift */,
+				C51EBC6926CB563C0011E8B5 /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +115,16 @@
 				C51EBC5526CB4C670011E8B5 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C51EBC6926CB563C0011E8B5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C51EBC6626CB56340011E8B5 /* FreeMeals.xcdatamodeld */,
+				C51EBC6A26CB56690011E8B5 /* CoreDataStack.swift */,
+				C51EBC6D26CB56AD0011E8B5 /* Meal+Convenience.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,7 +198,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51EBC4826CB4C630011E8B5 /* AppDelegate.swift in Sources */,
+				C51EBC6E26CB56AD0011E8B5 /* Meal+Convenience.swift in Sources */,
 				C51EBC5E26CB524E0011E8B5 /* ModelController.swift in Sources */,
+				C51EBC6826CB56340011E8B5 /* FreeMeals.xcdatamodeld in Sources */,
+				C51EBC6B26CB56690011E8B5 /* CoreDataStack.swift in Sources */,
 				C51EBC5C26CB523D0011E8B5 /* Meal.swift in Sources */,
 				C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */,
 			);
@@ -385,6 +405,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C51EBC6626CB56340011E8B5 /* FreeMeals.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C51EBC6726CB56340011E8B5 /* FreeMeals.xcdatamodel */,
+			);
+			currentVersion = C51EBC6726CB56340011E8B5 /* FreeMeals.xcdatamodel */;
+			path = FreeMeals.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C51EBC3C26CB4C630011E8B5 /* Project object */;
 }
