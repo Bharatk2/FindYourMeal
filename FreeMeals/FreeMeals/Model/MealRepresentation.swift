@@ -8,18 +8,18 @@
 import Foundation
 
 class MealRepresentation: Codable {
-    var meals: [Meal]
+    var meals: [MealRep]
     
     enum CodingKeys: String, CodingKey {
         case meals
     }
     
-    class Meal: Codable {
+    class MealRep: Codable {
         let id: String
         let mealName: String
         let category: String
         let area: String
-        let instruction: String
+        let instructions: String
         let mealThumb: String
         
         
@@ -29,7 +29,7 @@ class MealRepresentation: Codable {
             case mealName = "strMeal"
             case category = "strCategory"
             case area = "strArea"
-            case instruction = "strInstructions"
+            case instructions = "strInstructions"
             case mealThumb = "strMealThumb"
         }
         
@@ -43,7 +43,7 @@ class MealRepresentation: Codable {
             mealName = try mealDictionary.decode(String.self, forKey: .mealName)
             category = try mealDictionary.decode(String.self, forKey: .category)
             area = try mealDictionary.decode(String.self, forKey: .area)
-            instruction = try mealDictionary.decode(String.self, forKey: .instruction)
+            instructions = try mealDictionary.decode(String.self, forKey: .instructions)
             mealThumb = try mealDictionary.decode(String.self, forKey: .mealThumb)
             
         }

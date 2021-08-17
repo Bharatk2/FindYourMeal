@@ -88,8 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				C51EBC5B26CB523D0011E8B5 /* MealRepresentation.swift */,
-				C51EBC6926CB563C0011E8B5 /* CoreData */,
 				C51EBC6F26CB6D310011E8B5 /* Category.swift */,
+				C51EBC6926CB563C0011E8B5 /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
