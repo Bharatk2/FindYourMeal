@@ -14,8 +14,6 @@ class MealRepresentation: Codable {
         case meals
     }
     
-    
-    
     class Meal: Codable {
         let id: String
         let mealName: String
