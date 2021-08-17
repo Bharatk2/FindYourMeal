@@ -12,7 +12,7 @@
 		C51EBC4F26CB4C630011E8B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC4D26CB4C630011E8B5 /* Main.storyboard */; };
 		C51EBC5126CB4C670011E8B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC5026CB4C670011E8B5 /* Assets.xcassets */; };
 		C51EBC5426CB4C670011E8B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC5226CB4C670011E8B5 /* LaunchScreen.storyboard */; };
-		C51EBC5C26CB523D0011E8B5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC5B26CB523D0011E8B5 /* Meal.swift */; };
+		C51EBC5C26CB523D0011E8B5 /* MealRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC5B26CB523D0011E8B5 /* MealRepresentation.swift */; };
 		C51EBC5E26CB524E0011E8B5 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC5D26CB524E0011E8B5 /* ModelController.swift */; };
 		C51EBC6826CB56340011E8B5 /* FreeMeals.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC6626CB56340011E8B5 /* FreeMeals.xcdatamodeld */; };
 		C51EBC6B26CB56690011E8B5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC6A26CB56690011E8B5 /* CoreDataStack.swift */; };
@@ -27,7 +27,7 @@
 		C51EBC5026CB4C670011E8B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C51EBC5326CB4C670011E8B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C51EBC5526CB4C670011E8B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C51EBC5B26CB523D0011E8B5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		C51EBC5B26CB523D0011E8B5 /* MealRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRepresentation.swift; sourceTree = "<group>"; };
 		C51EBC5D26CB524E0011E8B5 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		C51EBC6726CB56340011E8B5 /* FreeMeals.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FreeMeals.xcdatamodel; sourceTree = "<group>"; };
 		C51EBC6A26CB56690011E8B5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		C51EBC6226CB526B0011E8B5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C51EBC5B26CB523D0011E8B5 /* Meal.swift */,
+				C51EBC5B26CB523D0011E8B5 /* MealRepresentation.swift */,
 				C51EBC6926CB563C0011E8B5 /* CoreData */,
 			);
 			path = Model;
@@ -202,7 +202,7 @@
 				C51EBC5E26CB524E0011E8B5 /* ModelController.swift in Sources */,
 				C51EBC6826CB56340011E8B5 /* FreeMeals.xcdatamodeld in Sources */,
 				C51EBC6B26CB56690011E8B5 /* CoreDataStack.swift in Sources */,
-				C51EBC5C26CB523D0011E8B5 /* Meal.swift in Sources */,
+				C51EBC5C26CB523D0011E8B5 /* MealRepresentation.swift in Sources */,
 				C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
