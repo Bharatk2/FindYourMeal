@@ -41,6 +41,7 @@ class ModelController {
     func getCategories(completion: @escaping (Categories?, Error?) -> Void) {
         
         var request = URLRequest(url: Endpoints.categories)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
         
         dataLoader?.loadData(from: request, completion: { data, response, error in

@@ -26,12 +26,10 @@ class Categories: Codable {
         }
         
         required init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: Categories.CodingKeys.self)
-            var categoriesContainer = try container.nestedUnkeyedContainer(forKey: .categories)
-            let categoryDictionary = try categoriesContainer.nestedContainer(keyedBy: CategoryKeys.self)
-            id = try categoryDictionary.decode(String.self, forKey: .id)
-            category = try categoryDictionary.decode(String.self, forKey: .category)
-            categoryThumb = try categoryDictionary.decode(String.self, forKey: .categoryThumb)
+            let container = try decoder.container(keyedBy: CategoryKeys.self)
+            id = try container.decode(String.self, forKey: .id)
+            category = try container.decode(String.self, forKey: .category)
+            categoryThumb = try container.decode(String.self, forKey: .categoryThumb)
             
         }
     }
