@@ -38,4 +38,36 @@ class ModelController {
         self.dataLoader = dataLoader
     }
     
+    func getCategories(completion: @escaping (Categories?, Error?) -> Void) {
+        
+        var request = URLRequest(url: Endpoints.categories)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        dataLoader?.loadData(from: request, completion: { data, response, error in
+            
+            if let response = response as? HTTPURLResponse {
+                NSLog("Server responded with: \(response.statusCode)")
+            }
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let data = data else {
+                completion(nil, NetworkError.badData("No data was returned"))
+                return
+            }
+            
+            let categories = Categories.self
+            
+            do {
+                let categories = try self.decoder.decode(categories, from: data)
+                self.categories = categories.categories
+                return completion(categories, nil)
+            } catch {
+                return completion(nil, NetworkError.badData("there was an error decoding data"))
+            }
+        })
+    }
+    
+    
 }
