@@ -34,6 +34,7 @@
 		C51EBC6A26CB56690011E8B5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C51EBC6D26CB56AD0011E8B5 /* Meal+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Convenience.swift"; sourceTree = "<group>"; };
 		C51EBC6F26CB6D310011E8B5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C5C3D2F826CDD93400CC7E77 /* Instructions.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Instructions.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 		C51EBC4626CB4C630011E8B5 /* FreeMeals */ = {
 			isa = PBXGroup;
 			children = (
+				C5C3D2F526CDD8C500CC7E77 /* Instructions */,
 				C51EBC6026CB525C0011E8B5 /* Application */,
 				C51EBC6226CB526B0011E8B5 /* Model */,
 				C51EBC6326CB52700011E8B5 /* ModelController */,
@@ -128,6 +130,14 @@
 				C51EBC6D26CB56AD0011E8B5 /* Meal+Convenience.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C5C3D2F526CDD8C500CC7E77 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				C5C3D2F826CDD93400CC7E77 /* Instructions.md */,
+			);
+			path = Instructions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

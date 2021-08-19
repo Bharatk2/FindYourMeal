@@ -28,9 +28,6 @@ extension Meal {
 
     @discardableResult convenience init?(representation: MealRepresentation.MealRep,
                                             context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-
-       
-        
         self.init(id: representation.id,
                   mealName: representation.mealName,
                   category: representation.category,

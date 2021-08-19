@@ -22,8 +22,6 @@ class MealRepresentation: Codable {
         let instructions: String
         let mealThumb: String
         
-        
-        
         enum MealKeys: String, CodingKey {
             case id = "idMeal"
             case mealName = "strMeal"
@@ -32,8 +30,6 @@ class MealRepresentation: Codable {
             case instructions = "strInstructions"
             case mealThumb = "strMealThumb"
         }
-        
-        
         
         required init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: MealRepresentation.CodingKeys.self)
