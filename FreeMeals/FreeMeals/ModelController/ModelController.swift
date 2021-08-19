@@ -26,6 +26,16 @@ class ModelController {
     let operationQueue = OperationQueue()
     static var shared = ModelController()
     
+    // MARK: - Computed Properties
+    private lazy var decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return decoder
+    }()
     
+    // MARK: - Initializer
+    init(dataLoader: DataLoader = URLSession.shared) {
+        self.dataLoader = dataLoader
+    }
     
 }
