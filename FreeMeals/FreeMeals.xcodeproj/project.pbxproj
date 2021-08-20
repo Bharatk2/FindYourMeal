@@ -20,6 +20,7 @@
 		C5C3D2FF26CE142600CC7E77 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3D2FE26CE142600CC7E77 /* Cache.swift */; };
 		C5ECAAB426CEB3AB009355F7 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ECAAB326CEB3AB009355F7 /* CategoriesTableViewController.swift */; };
 		C5ECAAB626CEB3C8009355F7 /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ECAAB526CEB3C8009355F7 /* CategoriesTableViewCell.swift */; };
+		D2B7B40426D05A5100A05F28 /* MealsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		C5C3D2FE26CE142600CC7E77 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C5ECAAB326CEB3AB009355F7 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		C5ECAAB526CEB3C8009355F7 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				C5ECAAB326CEB3AB009355F7 /* CategoriesTableViewController.swift */,
+				D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				C5C3D2FB26CE13FE00CC7E77 /* Endpoints+HTTPMethods.swift in Sources */,
 				C51EBC5C26CB523D0011E8B5 /* MealRepresentation.swift in Sources */,
 				C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */,
+				D2B7B40426D05A5100A05F28 /* MealsCollectionViewController.swift in Sources */,
 				C5ECAAB626CEB3C8009355F7 /* CategoriesTableViewCell.swift in Sources */,
 				C51EBC7026CB6D320011E8B5 /* Category.swift in Sources */,
 			);
@@ -390,7 +394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDC2MPU893;
-				INFOPLIST_FILE = "/Users/Bharat_Kumar/Documents/iOS FetchRewards/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist";
+				INFOPLIST_FILE = /Users/bk0521/Documents/FetchRewardsProejct/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,7 +413,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDC2MPU893;
-				INFOPLIST_FILE = "/Users/Bharat_Kumar/Documents/iOS FetchRewards/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist";
+				INFOPLIST_FILE = /Users/bk0521/Documents/FetchRewardsProejct/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
