@@ -45,7 +45,7 @@ class MealDetailRepresentation: Codable {
         let id: String
         let mealName: String
         let instructions: String
-        let ingredients: String
+        let ingredients: [String]
         let measure: String
         let category: String
         
@@ -83,8 +83,8 @@ class MealDetailRepresentation: Codable {
             id = try container.decode(String.self, forKey: .id)
             mealName = try container.decode(String.self, forKey: .mealName)
             instructions = try container.decode(String.self, forKey: .instructions)
-            
-            
+            category = try container.decode(String.self, forKey: .category)
+        
         }
     }
 }
