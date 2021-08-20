@@ -14,7 +14,14 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     let customCellIdentifier = "mealCellIdentifier"
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = CGSize(width: 150, height: 150)
+        layout.scrollDirection = .horizontal
+        
+        let frame = self.view.frame
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        view.backgroundColor = .lightGray
+        collectionView.backgroundColor = .lightGray
         collectionView.delegate = self
         collectionView.dataSource = self
         registerCollectionViewCell()
