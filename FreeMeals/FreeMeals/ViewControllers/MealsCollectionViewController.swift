@@ -10,17 +10,20 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class MealsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+    
+    let customCellIdentifier = "mealCellIdentifier"
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .red
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        registerCollectionViewCell()
+    }
+    
+    func registerCollectionViewCell() {
+        collectionView.register(MealCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
+        navigationItem.title = "Home"
+        collectionView.backgroundColor = UIColor.white
     }
 
     /*
