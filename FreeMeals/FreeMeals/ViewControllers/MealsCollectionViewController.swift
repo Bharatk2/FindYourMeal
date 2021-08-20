@@ -9,11 +9,11 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class MealsCollectionViewController: UICollectionViewController {
+class MealsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

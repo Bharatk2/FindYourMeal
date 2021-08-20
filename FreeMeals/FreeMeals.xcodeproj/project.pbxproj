@@ -21,6 +21,7 @@
 		C5ECAAB426CEB3AB009355F7 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ECAAB326CEB3AB009355F7 /* CategoriesTableViewController.swift */; };
 		C5ECAAB626CEB3C8009355F7 /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ECAAB526CEB3C8009355F7 /* CategoriesTableViewCell.swift */; };
 		D2B7B40426D05A5100A05F28 /* MealsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */; };
+		D2B7B40626D05C5C00A05F28 /* MealCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		C5ECAAB326CEB3AB009355F7 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		C5ECAAB526CEB3C8009355F7 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCollectionViewController.swift; sourceTree = "<group>"; };
+		D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				C5ECAAB526CEB3C8009355F7 /* CategoriesTableViewCell.swift */,
+				D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				C5ECAAB426CEB3AB009355F7 /* CategoriesTableViewController.swift in Sources */,
 				C51EBC5E26CB524E0011E8B5 /* ModelController.swift in Sources */,
 				C5C3D2FF26CE142600CC7E77 /* Cache.swift in Sources */,
+				D2B7B40626D05C5C00A05F28 /* MealCollectionViewCell.swift in Sources */,
 				C5C3D2FB26CE13FE00CC7E77 /* Endpoints+HTTPMethods.swift in Sources */,
 				C51EBC5C26CB523D0011E8B5 /* MealRepresentation.swift in Sources */,
 				C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */,
