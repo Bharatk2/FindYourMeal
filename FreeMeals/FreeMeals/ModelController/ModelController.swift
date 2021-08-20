@@ -19,9 +19,9 @@ class ModelController {
     
     // MARK: - Properties
     var categories: [Categories.CategoryRepresentation] = []
+    var categoryName: String?
+    var meals: [MealRepresentation.MealRep] = []
     var imageCache = Cache<NSString, AnyObject>()
-    var mealCache = Cache<String, Meal>()
-    var bgContext = CoreDataStack.shared.container.newBackgroundContext()
     var dataLoader: DataLoader?
     let operationQueue = OperationQueue()
     static var shared = ModelController()
@@ -49,6 +49,7 @@ class ModelController {
             if let response = response as? HTTPURLResponse {
                 NSLog("Server responded with: \(response.statusCode)")
             }
+            
             if let error = error {
                 completion(nil, error)
             }
@@ -62,12 +63,50 @@ class ModelController {
             
             do {
                 let categories = try self.decoder.decode(categories, from: data)
+                
+
                 self.categories = categories.categories
+                
                 return completion(categories, nil)
             } catch {
                 return completion(nil, NetworkError.badData("there was an error decoding data"))
             }
         })
+    }
+    
+    func getMeals(category: String,completion: @escaping (MealRepresentation?, Error?) -> Void) {
+     
+        let requestURL = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?c=\(category)")!
+        var request = URLRequest(url: requestURL)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.get.rawValue
+        dataLoader?.loadData(from: request, completion: { data, response, error in
+            if let response = response as? HTTPURLResponse {
+                NSLog("Server responded with: \(response.statusCode)")
+            }
+            
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let data = data else {
+                completion(nil, NetworkError.badData("No data was returned for meals"))
+                return
+            }
+            
+            let meals = MealRepresentation.self
+            
+            do {
+                let meals = try self.decoder.decode(meals, from: data)
+                
+                self.meals = meals.meals
+                return completion(meals, nil)
+            } catch {
+                return completion(nil, NetworkError.badData("there was an error decodig meal data "))
+            }
+            
+        })
+        
     }
     
     

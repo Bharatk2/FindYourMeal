@@ -18,6 +18,7 @@ class Categories: Codable {
         var id: String
         var category: String
         var categoryThumb: String
+       
         
         enum CategoryKeys: String, CodingKey {
             case id = "idCategory"
@@ -30,7 +31,6 @@ class Categories: Codable {
             id = try container.decode(String.self, forKey: .id)
             category = try container.decode(String.self, forKey: .category)
             categoryThumb = try container.decode(String.self, forKey: .categoryThumb)
-            
         }
     }
 }

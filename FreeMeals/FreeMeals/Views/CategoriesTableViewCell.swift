@@ -11,6 +11,12 @@ class CategoriesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var categoryName: UILabel!
     
+    @IBOutlet weak var mealName: UILabel!
+    var meal: MealRepresentation.MealRep? {
+        didSet {
+            mealUpdateViews()
+        }
+    }
     var category: Categories.CategoryRepresentation? {
         didSet {
             updateViews()
@@ -23,6 +29,9 @@ class CategoriesTableViewCell: UITableViewCell {
 
     func updateViews() {
         categoryName.text = category?.category
+    }
+    func mealUpdateViews() {
+        mealName.text = meal?.mealName
     }
 
 }

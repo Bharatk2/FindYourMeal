@@ -24,19 +24,35 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjg-ol-EiV">
-                                            <rect key="frame" x="147" y="25" width="120" height="21"/>
+                                            <rect key="frame" x="20" y="25" width="120" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="BjJ-pL-Ek9"/>
+                                                <constraint firstAttribute="width" constant="120" id="lOt-Ii-Wvf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piF-IL-3Jj">
+                                            <rect key="frame" x="308" y="24" width="86" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="tjg-ol-EiV" firstAttribute="centerX" secondItem="j80-vS-XWB" secondAttribute="centerX" id="MBi-0f-dfE"/>
-                                        <constraint firstItem="tjg-ol-EiV" firstAttribute="centerY" secondItem="j80-vS-XWB" secondAttribute="centerY" id="fNy-CQ-MTd"/>
+                                        <constraint firstItem="tjg-ol-EiV" firstAttribute="top" secondItem="j80-vS-XWB" secondAttribute="topMargin" constant="14" id="4NW-JK-LYw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="piF-IL-3Jj" secondAttribute="bottom" constant="15" id="9TZ-1l-HNZ"/>
+                                        <constraint firstItem="piF-IL-3Jj" firstAttribute="leading" relation="lessThanOrEqual" secondItem="tjg-ol-EiV" secondAttribute="trailing" constant="168" id="SDp-dK-I8G"/>
+                                        <constraint firstItem="tjg-ol-EiV" firstAttribute="leading" secondItem="j80-vS-XWB" secondAttribute="leadingMargin" id="hod-JY-KMg"/>
+                                        <constraint firstItem="piF-IL-3Jj" firstAttribute="trailing" secondItem="j80-vS-XWB" secondAttribute="trailingMargin" id="lgy-J2-xtZ"/>
+                                        <constraint firstItem="piF-IL-3Jj" firstAttribute="top" secondItem="j80-vS-XWB" secondAttribute="topMargin" constant="13" id="nVy-r9-Nlk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="tjg-ol-EiV" secondAttribute="bottom" constant="14" id="pjV-F0-mE6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="categoryName" destination="tjg-ol-EiV" id="lS0-bG-Nyc"/>
+                                    <outlet property="mealName" destination="piF-IL-3Jj" id="aN9-B3-Abp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
