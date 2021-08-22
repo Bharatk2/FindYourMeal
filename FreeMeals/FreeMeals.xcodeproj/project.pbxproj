@@ -398,7 +398,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDC2MPU893;
-				INFOPLIST_FILE = /Users/bk0521/Documents/FetchRewardsProejct/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist;
+				INFOPLIST_FILE = "/Users/Bharat_Kumar/Documents/iOS FetchRewards/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -417,7 +417,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDC2MPU893;
-				INFOPLIST_FILE = /Users/bk0521/Documents/FetchRewardsProejct/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist;
+				INFOPLIST_FILE = "/Users/Bharat_Kumar/Documents/iOS FetchRewards/FetchRewardsiOSExercise/FreeMeals/FreeMeals/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

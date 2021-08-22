@@ -14,6 +14,7 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     let customCellIdentifier = "mealCellIdentifier"
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
+    var horizontalMeals: CGFloat = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +24,7 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func setUpCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 150, height: 150)
-        layout.scrollDirection = .horizontal
-        
-        let frame = self.view.frame
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView.accessibilityScroll(.right)
         view.backgroundColor = .lightGray
         collectionView.backgroundColor = .lightGray
         collectionView.delegate = self
@@ -94,20 +90,36 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     
     // MARK: UICollectionViewDataSource
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right
+        let itemSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * (horizontalMeals - 1)
+        let width = (collectionView.frame.width - horizontalInsets - itemSpacing) / horizontalMeals
+        return CGSize(width: width, height: width * 1.3)
+    }
+    
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        if section == 0 {
+            return categories.count
+        } else {
+            return meals.count
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? MealCollectionViewCell else { return UICollectionViewCell() }
+        if indexPath.section == 0 {
+            cell.categoryNameLabel.text = categories[indexPath.row].category
+        } else {
+            cell.mealNameLabel.text = meals[indexPath.row].mealName
+        }
         // Configure the cell
         
         return cell
