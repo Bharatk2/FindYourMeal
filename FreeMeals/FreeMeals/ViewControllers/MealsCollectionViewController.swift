@@ -15,15 +15,21 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
     var horizontalMeals: CGFloat = 2
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
         registerCollectionViewCell()
         getCategoriesAndMeals()
+        
+        collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
+        
+        
+        
     }
     
     func setUpCollectionView() {
+   
         collectionView.accessibilityScroll(.right)
         view.backgroundColor = .lightGray
         collectionView.backgroundColor = .lightGray
@@ -96,35 +102,45 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
         let width = (collectionView.frame.width - horizontalInsets - itemSpacing) / horizontalMeals
         return CGSize(width: width, height: width * 1.3)
     }
-    
+
+
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        return categories.count
     }
-    
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        if section == 0 {
-            return categories.count
-        } else {
+ 
             return meals.count
-        }
+       
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? MealCollectionViewCell else { return UICollectionViewCell() }
-        if indexPath.section == 0 {
-            cell.categoryNameLabel.text = categories[indexPath.row].category
-        } else {
+            
             cell.mealNameLabel.text = meals[indexPath.row].mealName
-        }
+        
         // Configure the cell
         
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else { return UICollectionReusableView() }
+        header.configure()
+        if indexPath.section < categories.count {
+           
+        header.titleLabel.text = categories[indexPath.section].category
+        }
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: 50)
+    }
+    
+
+   
     // MARK: UICollectionViewDelegate
     
     /*
