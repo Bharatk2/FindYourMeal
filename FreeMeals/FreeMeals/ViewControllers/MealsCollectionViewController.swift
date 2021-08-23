@@ -55,13 +55,12 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
                 NSLog("Categories not found")
                 return
             }
+            
             self.categories = categories.categories
-            let categoriesNames = self.categories.map { $0.category }
+
             for category in self.categories {
-                
-               
-                fetchMeals(category: category.category)
-                
+                    fetchMeals(category: category.category)
+    
             }
             
             
@@ -82,9 +81,9 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
                 NSLog("meals not found")
                 return
             }
-            if category == category {
+          
             self.meals = meals.meals
-            }
+            
 
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

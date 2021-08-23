@@ -110,46 +110,55 @@ class MealDetailRepresentation: Codable {
             } else  {
                 self.ingredient1 = "N/A"
             }
+            
             if let ingredient2 = try container.decodeIfPresent(String.self, forKey: .ingredient2) {
                 self.ingredient2 = ingredient2
             } else {
                 self.ingredient2 = "N/A"
             }
+            
             if let ingredient3 = try container.decodeIfPresent(String.self, forKey: .ingredient3) {
                 self.ingredient3 = ingredient3
             } else {
                 self.ingredient3 = "N/A"
             }
+            
             if let ingredient4 = try container.decodeIfPresent(String.self, forKey: .ingredient4) {
                 self.ingredient4 = ingredient4
             } else {
                 self.ingredient4 = "N/A"
             }
+            
             if let ingredient5 = try container.decodeIfPresent(String.self, forKey: .ingredient5) {
                 self.ingredient5 = ingredient5
             } else {
                 self.ingredient5 = "N/A"
             }
+            
             if let ingredient6 = try container.decodeIfPresent(String.self, forKey: .ingredient6) {
                 self.ingredient6 = ingredient6
             } else {
                 self.ingredient6 = "N/A"
             }
+            
             if let ingredient7 = try container.decodeIfPresent(String.self, forKey: .ingredient7) {
                 self.ingredient7 = ingredient7
             } else {
                 self.ingredient7 = "N/A"
             }
+            
             if let ingredient8 = try container.decodeIfPresent(String.self, forKey: .ingredient8) {
                 self.ingredient8 = ingredient8
             } else {
                 self.ingredient8 = "N/A"
             }
+            
             if let ingredient9 = try container.decodeIfPresent(String.self, forKey: .ingredient9) {
                 self.ingredient9 = ingredient9
             } else {
                 self.ingredient9 = "N/A"
             }
+            
             if let ingredient10 = try container.decodeIfPresent(String.self, forKey: .ingredient10) {
                 self.ingredient10 = ingredient10
             } else {
@@ -161,46 +170,55 @@ class MealDetailRepresentation: Codable {
             } else {
                 self.measure1 = "N/A"
             }
+            
             if let  measure2 = try container.decodeIfPresent(String.self, forKey: .measure2) {
                 self.measure2 = measure2
             } else {
                 self.measure2 = "N/A"
             }
+            
             if let  measure3 = try container.decodeIfPresent(String.self, forKey: .measure3) {
                 self.measure3 = measure3
             } else {
                 self.measure3 = "N/A"
             }
+            
             if let  measure4 = try container.decodeIfPresent(String.self, forKey: .measure4) {
                 self.measure4 = measure4
             } else {
                 self.measure4 = "N/A"
             }
+            
             if let  measure5 = try container.decodeIfPresent(String.self, forKey: .measure5) {
                 self.measure5 = measure5
             } else {
                 self.measure5 = "N/A"
             }
+            
             if let  measure6 = try container.decodeIfPresent(String.self, forKey: .measure6) {
                 self.measure6 = measure6
             } else {
                 self.measure6 = "N/A"
             }
+            
             if let  measure7 = try container.decodeIfPresent(String.self, forKey: .measure7) {
                 self.measure7 = measure7
             } else {
                 self.measure7 = "N/A"
             }
+            
             if let  measure8 = try container.decodeIfPresent(String.self, forKey: .measure8) {
                 self.measure8 = measure8
             } else {
                 self.measure8 = "N/A"
             }
+            
             if let  measure9 = try container.decodeIfPresent(String.self, forKey: .measure9) {
                 self.measure9 = measure9
             } else {
                 self.measure9 = "N/A"
             }
+            
             if let  measure10 = try container.decodeIfPresent(String.self, forKey: .measure10) {
                 self.measure10 = measure10
             } else {
