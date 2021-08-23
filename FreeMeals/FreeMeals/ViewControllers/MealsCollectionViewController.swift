@@ -58,9 +58,13 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
             self.categories = categories.categories
             let categoriesNames = self.categories.map { $0.category }
             for category in self.categories {
+                
+               
                 fetchMeals(category: category.category)
                 
             }
+            
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -78,11 +82,10 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
                 NSLog("meals not found")
                 return
             }
+            if category == category {
             self.meals = meals.meals
-            
-            for meal in self.meals {
-                self.fetchMealDetails(mealID: meal.id ?? "")
             }
+
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -131,7 +134,9 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
 
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         return categories.count
+       
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -147,9 +152,17 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
 //            correctMeals.append(meals[indexPath.row])
 //        }
 //
-        if indexPath.row < meals.count {
+        if indexPath.row < meals.count  {
             cell.mealNameLabel.text = meals[indexPath.row].mealName
+            guard let imageURL = meals[indexPath.row].mealThumb else { return cell }
+            
+            ModelController.shared.getImages(imageURL: imageURL) { image, _ in
+                DispatchQueue.main.async {
+                    cell.productImage.image = image
+                }
+            }
         }
+        
         // Configure the cell
         
         return cell

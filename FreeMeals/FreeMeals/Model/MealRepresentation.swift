@@ -45,6 +45,7 @@ class MealDetailRepresentation: Codable {
         let id: String
         let mealName: String
         let instructions: String
+        let mealThumb: String
         let ingredient1: String
         let ingredient2: String
         let ingredient3: String
@@ -72,6 +73,7 @@ class MealDetailRepresentation: Codable {
             case id = "idMeal"
             case mealName = "strMeal"
             case instructions = "strInstructions"
+            case mealThumb = "strMealThumb"
             case category = "strCategory"
             case ingredient1 = "strIngredient1"
             case ingredient2 = "strIngredient2"
@@ -102,6 +104,7 @@ class MealDetailRepresentation: Codable {
             mealName = try container.decode(String.self, forKey: .mealName)
             instructions = try container.decode(String.self, forKey: .instructions)
             category = try container.decode(String.self, forKey: .category)
+            mealThumb = try container.decode(String.self, forKey: .mealThumb)
             if let ingredient1 = try container.decodeIfPresent(String.self, forKey: .ingredient1) {
                 self.ingredient1 = ingredient1
             } else  {
