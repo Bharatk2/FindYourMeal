@@ -21,6 +21,7 @@ class ModelController {
     var categories: [Categories.CategoryRepresentation] = []
     var categoryName: String?
     var meals: [MealRepresentation.MealRep] = []
+    var mealDetails: [MealDetailRepresentation.MealDetail] = []
     var imageCache = Cache<NSString, AnyObject>()
     var dataLoader: DataLoader?
     let operationQueue = OperationQueue()
@@ -100,6 +101,41 @@ class ModelController {
                 let meals = try self.decoder.decode(meals, from: data)
                 
                 self.meals = meals.meals
+                return completion(meals, nil)
+            } catch {
+                return completion(nil, NetworkError.badData("there was an error decodig meal data "))
+            }
+            
+        })
+        
+    }
+    
+    func getMealsById(mealID: String,completion: @escaping (MealDetailRepresentation?, Error?) -> Void) {
+     
+        let requestURL = URL(string: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(mealID)")!
+        var request = URLRequest(url: requestURL)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.get.rawValue
+        dataLoader?.loadData(from: request, completion: { data, response, error in
+            if let response = response as? HTTPURLResponse {
+                NSLog("Server responded with: \(response.statusCode)")
+            }
+            
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let data = data else {
+                completion(nil, NetworkError.badData("No data was returned for meals"))
+                return
+            }
+            
+            let meals = MealDetailRepresentation.self
+            
+            do {
+                let meals = try self.decoder.decode(meals, from: data)
+                
+                self.mealDetails = meals.meals
                 return completion(meals, nil)
             } catch {
                 return completion(nil, NetworkError.badData("there was an error decodig meal data "))

@@ -12,8 +12,10 @@ private let reuseIdentifier = "Cell"
 class MealsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let customCellIdentifier = "mealCellIdentifier"
+    var correctMeals: [MealRepresentation.MealRep] = []
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
+    var mealDetails: [MealDetailRepresentation.MealDetail] = []
     var horizontalMeals: CGFloat = 2
 
     override func viewDidLoad() {
@@ -55,8 +57,9 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
             }
             self.categories = categories.categories
             let categoriesNames = self.categories.map { $0.category }
-            for name in categoriesNames {
-                fetchMeals(category: name)
+            for category in self.categories {
+                fetchMeals(category: category.category)
+                
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -77,11 +80,33 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
             }
             self.meals = meals.meals
             
+            for meal in self.meals {
+                self.fetchMealDetails(mealID: meal.id ?? "")
+            }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
         
+    }
+    
+    func fetchMealDetails(mealID: String) {
+        ModelController.shared.getMealsById(mealID: mealID) { mealDetails, error in
+            if let error = error {
+                NSLog("error in fetching meal details: \(error)")
+                return
+            }
+        
+            guard let mealDetails = mealDetails else {
+                NSLog("mealdetail not found")
+                return
+            }
+            self.mealDetails = mealDetails.meals
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     /*
@@ -117,9 +142,14 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? MealCollectionViewCell else { return UICollectionViewCell() }
-            
+       
+//        if categories[indexPath.row].category == mealDetails[indexPath.row].category && meals[indexPath.row].mealName == mealDetails[indexPath.row].mealName {
+//            correctMeals.append(meals[indexPath.row])
+//        }
+//
+        if indexPath.row < meals.count {
             cell.mealNameLabel.text = meals[indexPath.row].mealName
-        
+        }
         // Configure the cell
         
         return cell
