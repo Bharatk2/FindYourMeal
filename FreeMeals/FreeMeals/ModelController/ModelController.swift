@@ -145,5 +145,40 @@ class ModelController {
         
     }
     
+    //MARK: - Get Image Instructions
+    /*
+     All we need to do is call this function in the view controller cell,
+     assign the imageURL to the offerImageURL
+     and assign  completion image to the outlet image
+     */
+    func getImages(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void) {
+        
+        let imageString = NSString(string: imageURL)
+        if let imageFromCache = imageCache.value(for: imageString) as? UIImage {
+            completion(imageFromCache, nil)
+            return
+        }
+        guard let imageURL = URL(string: imageURL) else {
+            return completion(nil, NetworkError.badURL("The url for image was incorrect"))
+        }
+        
+        dataLoader?.loadData(from: imageURL, completion: { data, _, error in
+            if let error = error {
+                NSLog("error in fetching image :\(error)")
+                return
+            }
+            
+            guard let data = data,
+                  let image = UIImage(data: data) else {
+                completion(nil, NetworkError.badData("there was an error in image data"))
+                return
+            }
+            
+            self.imageCache.cache(value: image, for: imageString)
+            completion(image, nil)
+            
+        })
+    }
+    
     
 }
