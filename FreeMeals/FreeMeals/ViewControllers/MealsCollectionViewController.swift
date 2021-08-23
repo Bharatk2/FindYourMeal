@@ -25,9 +25,6 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
         getCategoriesAndMeals()
         
         collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
-        
-        
-        
     }
     
     func setUpCollectionView() {
