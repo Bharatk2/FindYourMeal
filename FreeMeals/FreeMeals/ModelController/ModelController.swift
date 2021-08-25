@@ -21,7 +21,6 @@ class ModelController {
     var categories: [Categories.CategoryRepresentation] = []
     var categoryName: String?
     var meals: [MealRepresentation.MealRep] = []
-    var mealDetails: [MealDetailRepresentation.MealDetail] = []
     var imageCache = Cache<NSString, AnyObject>()
     var dataLoader: DataLoader?
     let operationQueue = OperationQueue()
@@ -137,7 +136,7 @@ class ModelController {
             do {
                 let meals = try self.decoder.decode(meals, from: data)
                 
-                self.mealDetails = meals.meals
+              
                 return completion(meals, nil)
             } catch {
                 return completion(nil, NetworkError.badData("there was an error decodig meal data "))

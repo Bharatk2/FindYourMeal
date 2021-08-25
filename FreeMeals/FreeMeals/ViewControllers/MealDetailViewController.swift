@@ -10,8 +10,7 @@ import UIKit
 class MealDetailViewController: UIViewController {
 
     //MARK: - Properties
-    var mealDetail: MealDetailRepresentation.MealDetail?
-    var delegate: MealsCollectionViewController?
+    var mealDetail: MealDetailRepresentation?
     var mealImageView = UIImageView()
     var mealNameLabel = UILabel()
     var instructionsLabel = UILabel()
@@ -20,7 +19,7 @@ class MealDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpSubviews()
-        self.updateViews()
+    
         // Do any additional setup after loading the view.
     }
     
@@ -63,16 +62,16 @@ class MealDetailViewController: UIViewController {
         
     }
     
-    private func updateViews() {
-        guard let mealDetail = mealDetail else { return }
-        self.mealNameLabel.text = mealDetail.mealName
-        self.instructionsLabel.text = mealDetail.instructions
-        ModelController.shared.getImages(imageURL: mealDetail.mealThumb) { image, _ in
-            DispatchQueue.main.async {
-                self.mealImageView.image = image
-            }
-        }
-    }
+//    private func updateViews() {
+//        guard let mealDetail = mealDetail else { return }
+//        self.mealNameLabel.text = mealDetail.mealName
+//        self.instructionsLabel.text = mealDetail.instructions
+//        ModelController.shared.getImages(imageURL: mealDetail.mealThumb) { image, _ in
+//            DispatchQueue.main.async {
+//                self.mealImageView.image = image
+//            }
+//        }
+//    }
 
 
     /*
