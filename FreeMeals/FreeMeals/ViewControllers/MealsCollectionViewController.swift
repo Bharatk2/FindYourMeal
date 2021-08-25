@@ -7,12 +7,11 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class MealsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
     let customCellIdentifier = "mealCellIdentifier"
-    var correctMeals: [MealRepresentation.MealRep] = []
+    var categoryIndex: [Categories.CategoryRepresentation: Int] = [:]
+    var categoryDictionary: [Categories.CategoryRepresentation: [MealRepresentation.MealRep]] = [:]
+    let categoryNames: [String] = []
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
     var mealDetails: [MealDetailRepresentation.MealDetail] = []
@@ -23,9 +22,9 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
         setUpCollectionView()
         registerCollectionViewCell()
         getCategoriesAndMeals()
-        
         collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
     }
+    
     
     func setUpCollectionView() {
    
@@ -54,19 +53,66 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
             }
             
             self.categories = categories.categories
-
+          
             for category in self.categories {
-                    fetchMeals(category: category.category)
-    
-            }
+                
+                ModelController.shared.getMeals(category: category.category) { meals, error in
+                    if let error = error {
+                        NSLog("error in fetching meals: \(error)")
+                        return
+                    }
+                    
+                    guard let meals = meals else {
+                        NSLog("meals not found")
+                        return
+                    }
+                  
+                    
+                    self.meals = meals.meals
+                    self.categoryDictionary[category] = self.meals
+                  
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
+              
             
+            }
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
         
+        
+        
     }
+    
+    func testFetchMeals(for indexPath: IndexPath) {
+        ModelController.shared.getMeals(category: categories[indexPath.row].category) { meals, error in
+            if let error = error {
+                NSLog("error in fetching meals: \(error)")
+                return
+            }
+            
+            guard let meals = meals else {
+                NSLog("meals not found")
+                return
+            }
+          
+            
+            self.meals = meals.meals
+            for meal in self.meals {
+                self.fetchMealDetails(mealID: meal.id ?? "")
+            }
+         
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+
+    }
+    
     func fetchMeals(category: String) {
         ModelController.shared.getMeals(category: category) { meals, error in
             if let error = error {
@@ -79,9 +125,10 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
                 return
             }
           
-            self.meals = meals.meals
             
-
+            self.meals = meals.meals
+         
+         
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -90,7 +137,8 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func fetchMealDetails(mealID: String) {
-        ModelController.shared.getMealsById(mealID: mealID) { mealDetails, error in
+       
+            ModelController.shared.getMealsById(mealID: mealID) { mealDetails, error in
             if let error = error {
                 NSLog("error in fetching meal details: \(error)")
                 return
@@ -100,12 +148,15 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
                 NSLog("mealdetail not found")
                 return
             }
-            self.mealDetails = mealDetails.meals
             
+            self.mealDetails = mealDetails.meals
+                
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
+        
+        
     }
     
     /*
@@ -117,7 +168,7 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
      // Pass the selected object to the new view controller.
      }
      */
-    
+    // an array of dictionarys with [Category: [Meal]]
     // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -131,44 +182,50 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        return categories.count
+        return categoryDictionary.keys.count
        
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
- 
-            return meals.count
+       
+        return categoryDictionary.values.count
        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? MealCollectionViewCell else { return UICollectionViewCell() }
-       
-//        if categories[indexPath.row].category == mealDetails[indexPath.row].category && meals[indexPath.row].mealName == mealDetails[indexPath.row].mealName {
-//            correctMeals.append(meals[indexPath.row])
-//        }
-//
-        if indexPath.row < meals.count  {
-            cell.mealNameLabel.text = meals[indexPath.row].mealName
-            guard let imageURL = meals[indexPath.row].mealThumb else { return cell }
-            
-            ModelController.shared.getImages(imageURL: imageURL) { image, _ in
-                DispatchQueue.main.async {
-                    cell.productImage.image = image
-                }
+        for meal in categoryDictionary.values {
+            for category in categoryDictionary.keys {
+                print("the category \(category.category) has \(meal.map { $0.mealName})")
             }
         }
-        
-        // Configure the cell
-        
+
+//        if indexPath.row < categoryDictionary.values.count {
+//            cell.mealNameLabel.text
+//            guard let imageURL = meals[indexPath.row].mealThumb else { return cell }
+//            ModelController.shared.getImages(imageURL: imageURL) { image, _ in
+//                DispatchQueue.main.async {
+//                    cell.productImage.image = image
+//                }
+//            }
+//        }
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let mealsDetailViewController = MealDetailViewController()
+       
+        let collectionMeal = mealDetails[indexPath.row]
+        mealsDetailViewController.mealDetail = collectionMeal
+        
+        navigationController?.pushViewController(mealsDetailViewController, animated: true)
+    }
+
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else { return UICollectionReusableView() }
         header.configure()
         if indexPath.section < categories.count {
-           
         header.titleLabel.text = categories[indexPath.section].category
         }
         return header

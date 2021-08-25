@@ -67,7 +67,7 @@ class ModelController {
                 
 
                 self.categories = categories.categories
-                
+             
                 return completion(categories, nil)
             } catch {
                 return completion(nil, NetworkError.badData("there was an error decoding data"))
@@ -99,9 +99,11 @@ class ModelController {
             
             do {
                 let meals = try self.decoder.decode(meals, from: data)
-                
+
                 self.meals = meals.meals
                 return completion(meals, nil)
+                
+              
             } catch {
                 return completion(nil, NetworkError.badData("there was an error decodig meal data "))
             }

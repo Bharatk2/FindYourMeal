@@ -21,6 +21,11 @@ class MealCollectionViewCell: UICollectionViewCell {
         handleConstraints()
     }
     
+    override func prepareForReuse() {
+        self.categoryNameLabel.text = ""
+        self.mealNameLabel.text = ""
+        self.productImage.image = nil
+    }
     func handleConstraints() {
         //Content View Constraints
         
@@ -77,4 +82,6 @@ class MealCollectionViewCell: UICollectionViewCell {
         productImage.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 5).isActive = true
         productImage.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -5).isActive = true
     }
+    
+    
 }
