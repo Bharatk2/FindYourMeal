@@ -34,15 +34,6 @@ class MealDetailViewController: UIViewController {
       return contentView
     }()
 
-    private lazy var stackView: UIStackView = {
-      let stackView = UIStackView()
-      stackView.axis = .vertical
-      stackView.alignment = .leading
-      stackView.spacing = 16
-      stackView.translatesAutoresizingMaskIntoConstraints = false
-      return stackView
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpSubviews()
@@ -140,7 +131,6 @@ class MealDetailViewController: UIViewController {
         instructionsLabel.topAnchor.constraint(equalTo: instructionTitle.bottomAnchor, constant: 10).isActive = true
         instructionsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50).isActive = true
         instructionsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
-        
         ingredientsButton.setTitle("View Ingredients", for: .normal)
         ingredientsButton.layer.cornerRadius = 12
         ingredientsButton.layer.borderColor = UIColor.black.cgColor
@@ -151,6 +141,7 @@ class MealDetailViewController: UIViewController {
         ingredientsButton.topAnchor.constraint(equalTo: instructionsLabel.bottomAnchor, constant: 10).isActive = true
         ingredientsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50).isActive = true
         ingredientsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
+        ingredientsButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
         ingredientsButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         ingredientsButton.heightAnchor.constraint(equalToConstant: 50).isActive = true

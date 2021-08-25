@@ -11,6 +11,11 @@ class MealCollectionViewCell: UICollectionViewCell {
     var categoryNameLabel = UILabel()
     var mealNameLabel = UILabel()
     var productImage = UIImageView()
+    var meal: MealRepresentation.MealRep? {
+        didSet {
+            updateViews()
+        }
+    }
     //MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,6 +86,18 @@ class MealCollectionViewCell: UICollectionViewCell {
         productImage.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
         productImage.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 5).isActive = true
         productImage.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -5).isActive = true
+    }
+    
+    func updateViews() {
+        guard let meal = meal,
+              let imageURL = meal.mealThumb else { return }
+        mealNameLabel.text = meal.mealName
+        
+        ModelController.shared.getImages(imageURL: imageURL) { image, _ in
+            DispatchQueue.main.async {
+                self.productImage.image = image
+            }
+        }
     }
     
     

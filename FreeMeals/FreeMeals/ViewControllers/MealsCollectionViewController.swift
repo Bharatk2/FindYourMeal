@@ -13,6 +13,7 @@ class MealsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pickerViewController: UIPickerView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let categoryNames: [String] = []
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
@@ -28,9 +29,18 @@ class MealsViewController: UIViewController {
         collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
     }
     
-    func setUpCollectionView() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCategoriesAndMeals()
+    }
+ 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.reloadData()
         
-        collectionView.accessibilityScroll(.right)
+    }
+    
+    func setUpCollectionView() {
         view.backgroundColor = .lightGray
         collectionView.backgroundColor = .lightGray
         self.collectionView.delegate = self
@@ -44,7 +54,9 @@ class MealsViewController: UIViewController {
     }
     
     func getCategoriesAndMeals() {
+   
         ModelController.shared.getCategories { [self] categories, error in
+            
             if let error = error {
                 NSLog("error in fetching categories: \(error)")
                 return
@@ -56,6 +68,7 @@ class MealsViewController: UIViewController {
             
             self.categories = categories.categories
             DispatchQueue.main.async {
+           
                 self.pickerViewController.reloadAllComponents()
                 self.collectionView.reloadData()
             }
@@ -64,6 +77,7 @@ class MealsViewController: UIViewController {
     
     func fetchMeals(category: String) {
         ModelController.shared.getMeals(category: category) { meals, error in
+            
             if let error = error {
                 NSLog("error in fetching meals: \(error)")
                 return
@@ -75,6 +89,7 @@ class MealsViewController: UIViewController {
             }
             
             self.meals = meals.meals
+           
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -86,6 +101,7 @@ class MealsViewController: UIViewController {
 
 // MARK: UICollectionViewDataSource
 extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right
@@ -102,15 +118,8 @@ extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? MealCollectionViewCell else { return UICollectionViewCell() }
         
-        if indexPath.row < meals.count {
-            cell.mealNameLabel.text = meals[indexPath.row].mealName
-            guard let imageURL = meals[indexPath.row].mealThumb else { return cell }
-            ModelController.shared.getImages(imageURL: imageURL) { image, _ in
-                DispatchQueue.main.async {
-                    cell.productImage.image = image
-                }
-            }
-        }
+        cell.meal = meals[indexPath.row]
+        cell.setNeedsLayout()
         return cell
     }
     
@@ -140,5 +149,6 @@ extension MealsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         let selectedCat = categories[row].category
         print("selectedCat   \(selectedCat)")
         self.fetchMeals(category: selectedCat)
+       
     }
 }
