@@ -8,7 +8,7 @@
 import UIKit
 
 class MealsViewController: UIViewController {
- 
+    
     let customCellIdentifier = "mealCellIdentifier"
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -18,9 +18,9 @@ class MealsViewController: UIViewController {
     let categoryNames: [String] = []
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
-
+    
     var horizontalMeals: CGFloat = 2
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
@@ -36,7 +36,7 @@ class MealsViewController: UIViewController {
         
     }
     func setUpCollectionView() {
-   
+        
         collectionView.accessibilityScroll(.right)
         view.backgroundColor = .lightGray
         collectionView.backgroundColor = .lightGray
@@ -65,7 +65,7 @@ class MealsViewController: UIViewController {
             
             self.categories = categories.categories
             
-           
+            
             DispatchQueue.main.async {
                 self.pickerViewController.reloadAllComponents()
                 self.collectionView.reloadData()
@@ -87,18 +87,18 @@ class MealsViewController: UIViewController {
                 NSLog("meals not found")
                 return
             }
-          
+            
             
             self.meals = meals.meals
             for meal in self.meals {
                 self.fetchMealDetails(mealID: meal.id ?? "")
             }
-         
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
-
+        
     }
     
     func fetchMeals(category: String) {
@@ -112,11 +112,11 @@ class MealsViewController: UIViewController {
                 NSLog("meals not found")
                 return
             }
-          
+            
             
             self.meals = meals.meals
-         
-         
+            
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -125,20 +125,20 @@ class MealsViewController: UIViewController {
     }
     
     func fetchMealDetails(mealID: String) {
-       
-            ModelController.shared.getMealsById(mealID: mealID) { mealDetails, error in
+        
+        ModelController.shared.getMealsById(mealID: mealID) { mealDetails, error in
             if let error = error {
                 NSLog("error in fetching meal details: \(error)")
                 return
             }
-        
+            
             guard let mealDetails = mealDetails else {
                 NSLog("mealdetail not found")
                 return
             }
             
             
-                
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -147,40 +147,40 @@ class MealsViewController: UIViewController {
         
     }
 }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
-    // an array of dictionarys with [Category: [Meal]]
-    // MARK: UICollectionViewDataSource
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+// an array of dictionarys with [Category: [Meal]]
+// MARK: UICollectionViewDataSource
 extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
-        
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right
         let itemSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * (horizontalMeals - 1)
         let width = (collectionView.frame.width - horizontalInsets - itemSpacing) / horizontalMeals
         return CGSize(width: width, height: width * 1.3)
     }
-
-
     
- 
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-       
+        
         return self.meals.count
-       
+        
     }
     
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? MealCollectionViewCell else { return UICollectionViewCell() }
-
+        
         if indexPath.row < meals.count {
             cell.mealNameLabel.text = meals[indexPath.row].mealName
             guard let imageURL = meals[indexPath.row].mealThumb else { return cell }
@@ -193,32 +193,18 @@ extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         return cell
     }
     
-     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let mealsDetailViewController = MealDetailViewController()
-//
-////        let collectionMeal = mealDetails[indexPath.row]
-//        mealsDetailViewController.mealDetail = collectionMeal
-//
-//        navigationController?.pushViewController(mealsDetailViewController, animated: true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+                let mealsDetailViewController = MealDetailViewController()
+        
+                let collectionMeal = meals[indexPath.row]
+                mealsDetailViewController.meal = collectionMeal
+                navigationController?.pushViewController(mealsDetailViewController, animated: true)
     }
+    
+    
+}
 
-    
-//     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else { return UICollectionReusableView() }
-//        header.configure()
-//        if indexPath.section < categories.count {
-//        header.titleLabel.text = categories[indexPath.section].category
-//        }
-//        return header
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.size.width, height: 50)
-//    }
-    
-    }
 
-    
 
 extension MealsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

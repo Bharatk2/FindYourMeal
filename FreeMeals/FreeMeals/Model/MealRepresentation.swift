@@ -16,7 +16,7 @@ class MealRepresentation: Codable {
     class MealRep: Codable {
         let mealName: String?
         let mealThumb: String?
-        let id: String?
+        let id: String
         
         enum MealKeys: String, CodingKey {
             case mealName = "strMeal"
@@ -28,27 +28,20 @@ class MealRepresentation: Codable {
             let container = try decoder.container(keyedBy: MealKeys.self)
             mealName = try container.decodeIfPresent(String.self, forKey: .mealName)
             mealThumb = try container.decodeIfPresent(String.self, forKey: .mealThumb)
-            id = try container.decodeIfPresent(String.self, forKey: .id)
+            id = try container.decode(String.self, forKey: .id)
             
         }
     }
 }
 
-struct MealDetailRepresentation: Codable {
-    var meals: [MealDetail]
-    
 
-    enum CodingKeys: String, CodingKey {
-        case meals
-    }
-}
 struct MealDetail: Codable {
     let id: String
     let mealName: String
     let category: String
     let instructions: String
     let mealThumb: String
-    let ingredients: String
+    let ingredients: [MealIngredients]
 
 }
 struct MealIngredients: Codable {
