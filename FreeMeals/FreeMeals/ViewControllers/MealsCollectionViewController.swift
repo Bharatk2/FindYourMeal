@@ -174,22 +174,22 @@ extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
        
-        return 0
+        return self.meals.count
        
     }
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? MealCollectionViewCell else { return UICollectionViewCell() }
 
-//        if indexPath.row < categoryDictionary.values.count {
-//            cell.mealNameLabel.text
-//            guard let imageURL = meals[indexPath.row].mealThumb else { return cell }
-//            ModelController.shared.getImages(imageURL: imageURL) { image, _ in
-//                DispatchQueue.main.async {
-//                    cell.productImage.image = image
-//                }
-//            }
-//        }
+        if indexPath.row < meals.count {
+            cell.mealNameLabel.text = meals[indexPath.row].mealName
+            guard let imageURL = meals[indexPath.row].mealThumb else { return cell }
+            ModelController.shared.getImages(imageURL: imageURL) { image, _ in
+                DispatchQueue.main.async {
+                    cell.productImage.image = image
+                }
+            }
+        }
         return cell
     }
     
@@ -237,5 +237,6 @@ extension MealsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedCat = categories[row].category
         print("selectedCat   \(selectedCat)")
+        self.fetchMeals(category: selectedCat)
     }
 }
