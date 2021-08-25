@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C514645426D5FF9B00335A03 /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514645326D5FF9B00335A03 /* MealsViewController.swift */; };
 		C51EBC4826CB4C630011E8B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC4726CB4C630011E8B5 /* AppDelegate.swift */; };
 		C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51EBC4926CB4C630011E8B5 /* SceneDelegate.swift */; };
 		C51EBC4F26CB4C630011E8B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51EBC4D26CB4C630011E8B5 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C514645326D5FF9B00335A03 /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
 		C51EBC4426CB4C630011E8B5 /* FreeMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51EBC4726CB4C630011E8B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C51EBC4926CB4C630011E8B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */,
+				C514645326D5FF9B00335A03 /* MealsViewController.swift */,
 				C53DD61226D1F5BD00A68DD0 /* CategoryCollectionReusableView.swift */,
 				C5462E4826D4518600B241F3 /* MealDetailViewController.swift */,
 			);
@@ -252,6 +255,7 @@
 				C5C3D2FB26CE13FE00CC7E77 /* Endpoints+HTTPMethods.swift in Sources */,
 				C51EBC5C26CB523D0011E8B5 /* MealRepresentation.swift in Sources */,
 				C51EBC4A26CB4C630011E8B5 /* SceneDelegate.swift in Sources */,
+				C514645426D5FF9B00335A03 /* MealsViewController.swift in Sources */,
 				D2B7B40426D05A5100A05F28 /* MealsCollectionViewController.swift in Sources */,
 				C51EBC7026CB6D320011E8B5 /* Category.swift in Sources */,
 			);

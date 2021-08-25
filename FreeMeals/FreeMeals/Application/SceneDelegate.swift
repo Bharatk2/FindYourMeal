@@ -14,11 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
      
-        guard let winScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: winScene)
-        window?.makeKeyAndVisible()
-        let layout = UICollectionViewFlowLayout()
-        window?.rootViewController = UINavigationController(rootViewController: MealsCollectionViewController(collectionViewLayout: layout))
+        guard let _ = (scene as? UIWindowScene) else { return }
+  
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

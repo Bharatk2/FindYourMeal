@@ -7,25 +7,33 @@
 
 import UIKit
 
-class MealsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MealsCollectionViewController: UIViewController, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource {
+ 
     let customCellIdentifier = "mealCellIdentifier"
+    
+    var pickerViewController = UIPickerView()
     var categoryIndex: [Categories.CategoryRepresentation: Int] = [:]
     var categoryDictionary: [Categories.CategoryRepresentation: [MealRepresentation.MealRep]] = [:]
     let categoryNames: [String] = []
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
-    var mealDetails: [MealDetailRepresentation.MealDetail] = []
+
     var horizontalMeals: CGFloat = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
+        pickerViewController.delegate = self
+        pickerViewController.dataSource = self
         registerCollectionViewCell()
         getCategoriesAndMeals()
         collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
     }
     
     
+    private func setUpViews() {
+        
+    }
     func setUpCollectionView() {
    
         collectionView.accessibilityScroll(.right)
@@ -40,6 +48,8 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
         navigationItem.title = "Home"
         collectionView.backgroundColor = UIColor.white
     }
+    
+    
     
     func getCategoriesAndMeals() {
         ModelController.shared.getCategories { [self] categories, error in
@@ -268,4 +278,13 @@ class MealsCollectionViewController: UICollectionViewController, UICollectionVie
      }
      */
     
+}
+extension MealsCollectionViewController {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 0
+    }
 }
