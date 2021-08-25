@@ -13,12 +13,9 @@ class MealsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pickerViewController: UIPickerView!
-    var categoryIndex: [Categories.CategoryRepresentation: Int] = [:]
-    var categoryDictionary: [Categories.CategoryRepresentation: [MealRepresentation.MealRep]] = [:]
     let categoryNames: [String] = []
     var categories: [Categories.CategoryRepresentation] = []
     var meals: [MealRepresentation.MealRep] = []
-    
     var horizontalMeals: CGFloat = 2
     
     override func viewDidLoad() {
@@ -31,10 +28,6 @@ class MealsViewController: UIViewController {
         collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
     }
     
-    
-    private func setUpViews() {
-        
-    }
     func setUpCollectionView() {
         
         collectionView.accessibilityScroll(.right)
@@ -50,8 +43,6 @@ class MealsViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
     }
     
-    
-    
     func getCategoriesAndMeals() {
         ModelController.shared.getCategories { [self] categories, error in
             if let error = error {
@@ -64,41 +55,11 @@ class MealsViewController: UIViewController {
             }
             
             self.categories = categories.categories
-            
-            
             DispatchQueue.main.async {
                 self.pickerViewController.reloadAllComponents()
                 self.collectionView.reloadData()
             }
         }
-        
-        
-        
-    }
-    
-    func testFetchMeals(for indexPath: IndexPath) {
-        ModelController.shared.getMeals(category: categories[indexPath.row].category) { meals, error in
-            if let error = error {
-                NSLog("error in fetching meals: \(error)")
-                return
-            }
-            
-            guard let meals = meals else {
-                NSLog("meals not found")
-                return
-            }
-            
-            
-            self.meals = meals.meals
-            for meal in self.meals {
-                self.fetchMealDetails(mealID: meal.id ?? "")
-            }
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-        
     }
     
     func fetchMeals(category: String) {
@@ -113,10 +74,7 @@ class MealsViewController: UIViewController {
                 return
             }
             
-            
             self.meals = meals.meals
-            
-            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -124,40 +82,8 @@ class MealsViewController: UIViewController {
         
     }
     
-    func fetchMealDetails(mealID: String) {
-        
-        ModelController.shared.getMealsById(mealID: mealID) { mealDetails, error in
-            if let error = error {
-                NSLog("error in fetching meal details: \(error)")
-                return
-            }
-            
-            guard let mealDetails = mealDetails else {
-                NSLog("mealdetail not found")
-                return
-            }
-            
-            
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-        
-        
-    }
 }
 
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-// an array of dictionarys with [Category: [Meal]]
 // MARK: UICollectionViewDataSource
 extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -168,12 +94,7 @@ extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         return CGSize(width: width, height: width * 1.3)
     }
     
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        
         return self.meals.count
         
     }
@@ -194,17 +115,13 @@ extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                let mealsDetailViewController = MealDetailViewController()
+        let mealsDetailViewController = MealDetailViewController()
         
-                let collectionMeal = meals[indexPath.row]
-                mealsDetailViewController.meal = collectionMeal
-                navigationController?.pushViewController(mealsDetailViewController, animated: true)
+        let collectionMeal = meals[indexPath.row]
+        mealsDetailViewController.meal = collectionMeal
+        navigationController?.pushViewController(mealsDetailViewController, animated: true)
     }
-    
-    
 }
-
-
 
 extension MealsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -214,7 +131,6 @@ extension MealsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categories[row].category
