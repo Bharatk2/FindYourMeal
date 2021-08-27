@@ -7,14 +7,16 @@
 
 import Foundation
 
+
+/// The struct ``Categories``will access categories array to decode all the categories in the networking implementation, this is the first step of the project.
 struct Categories: Codable {
-    var categories: [CategoryRepresentation]
+    var categories: [Category]
     
     enum CodingKeys: String, CodingKey {
         case categories
     }
     
-    struct CategoryRepresentation: Codable {
+    struct Category: Codable {
         var id: String
         var category: String
         var categoryThumb: String

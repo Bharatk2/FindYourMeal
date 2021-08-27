@@ -18,7 +18,7 @@ enum NetworkError: Error {
 class ModelController {
     
     // MARK: - Properties
-    var categories: [Categories.CategoryRepresentation] = []
+    var categories: [Categories.Category] = []
     var meals: [Meals.Meal] = []
     var imageCache = Cache<NSString, AnyObject>()
     var dataLoader: DataLoader?

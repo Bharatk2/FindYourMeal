@@ -15,7 +15,7 @@ class MealsViewController: UIViewController {
     @IBOutlet weak var pickerViewController: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let categoryNames: [String] = []
-    var categories: [Categories.CategoryRepresentation] = []
+    var categories: [Categories.Category] = []
     var meals: [Meals.Meal] = []
     var horizontalMeals: CGFloat = 2
     
