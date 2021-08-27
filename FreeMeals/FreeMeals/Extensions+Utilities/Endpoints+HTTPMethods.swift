@@ -7,12 +7,26 @@
 
 import Foundation
 
-enum Endpoints {}
-
-extension Endpoints {
-    static let categories = URL(string: "https://themealdb.com/api/json/v1/1/categories.php")!
-    static let meals = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?c=")!
-    static let mealById = URL(string: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=")!
+enum Endpoints {
+    static let baseURL = "https://www.themealdb.com/api/json/v1/1/"
+    case categories
+    case meals(String)
+    case mealsDetail(String)
+    
+    var stringValue: String {
+        switch self {
+        case .categories:
+            return Endpoints.baseURL + "categories.php"
+        case .meals(let category):
+            return Endpoints.baseURL + "filter.php?c=" + "\(category)"
+        case .mealsDetail(let mealID):
+            return Endpoints.baseURL + "lookup.php?i=" + "\(mealID)"
+        }
+    }
+    
+    var url: URL {
+        return URL(string: stringValue)!
+    }
 }
 
 enum HTTPMethod: String {

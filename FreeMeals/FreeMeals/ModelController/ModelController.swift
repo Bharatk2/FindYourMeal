@@ -37,8 +37,8 @@ class ModelController {
     }
     
     func getCategories(completion: @escaping (Categories?, Error?) -> Void) {
-        
-        var request = URLRequest(url: Endpoints.categories)
+        let requestURL = Endpoints.categories.url
+        var request = URLRequest(url: requestURL)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
         
@@ -74,7 +74,7 @@ class ModelController {
     
     func getMeals(category: String,completion: @escaping (Meals?, Error?) -> Void) {
         
-        let requestURL = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?c=\(category)")!
+        let requestURL = Endpoints.meals(category).url
         var request = URLRequest(url: requestURL)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
@@ -115,7 +115,7 @@ class ModelController {
     ///   - completion: Completion handler takes mealDetail as parameter which determines if fetching call succeeded or not.
     func getMealsById(mealID: String,completion: @escaping (MealDetail?, Error?) -> Void) {
         
-        let requestURL = URL(string: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(mealID)")!
+        let requestURL = Endpoints.mealsDetail(mealID).url
         var request = URLRequest(url: requestURL)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
