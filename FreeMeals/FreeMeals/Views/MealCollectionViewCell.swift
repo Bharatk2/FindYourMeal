@@ -11,7 +11,7 @@ class MealCollectionViewCell: UICollectionViewCell {
     var categoryNameLabel = UILabel()
     var mealNameLabel = UILabel()
     var productImage = UIImageView()
-    var meal: MealRepresentation.MealRep? {
+    var meal: Meals.Meal? {
         didSet {
             updateViews()
         }

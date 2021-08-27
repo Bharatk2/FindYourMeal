@@ -16,7 +16,7 @@ class MealsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let categoryNames: [String] = []
     var categories: [Categories.CategoryRepresentation] = []
-    var meals: [MealRepresentation.MealRep] = []
+    var meals: [Meals.Meal] = []
     var horizontalMeals: CGFloat = 2
     
     override func viewDidLoad() {

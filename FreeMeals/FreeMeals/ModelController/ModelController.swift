@@ -19,7 +19,7 @@ class ModelController {
     
     // MARK: - Properties
     var categories: [Categories.CategoryRepresentation] = []
-    var meals: [MealRepresentation.MealRep] = []
+    var meals: [Meals.Meal] = []
     var imageCache = Cache<NSString, AnyObject>()
     var dataLoader: DataLoader?
     static var shared = ModelController()
@@ -72,7 +72,7 @@ class ModelController {
         })
     }
     
-    func getMeals(category: String,completion: @escaping (MealRepresentation?, Error?) -> Void) {
+    func getMeals(category: String,completion: @escaping (Meals?, Error?) -> Void) {
         
         let requestURL = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?c=\(category)")!
         var request = URLRequest(url: requestURL)
@@ -92,7 +92,7 @@ class ModelController {
                 return
             }
             
-            let meals = MealRepresentation.self
+            let meals = Meals.self
             
             do {
                 let meals = try self.decoder.decode(meals, from: data)

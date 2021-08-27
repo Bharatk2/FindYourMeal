@@ -7,13 +7,13 @@
 
 import Foundation
 
-class MealRepresentation: Codable {
-    var meals: [MealRep]
+class Meals: Codable {
+    var meals: [Meal]
     
     enum CodingKeys: String, CodingKey {
         case meals = "meals"
     }
-    class MealRep: Codable {
+    class Meal: Codable {
         let mealName: String?
         let mealThumb: String?
         let id: String
@@ -44,6 +44,7 @@ struct MealDetail: Codable {
     let ingredients: [MealIngredients]
 
 }
+
 struct MealIngredients: Codable {
     let name: String
     let quantity: String
