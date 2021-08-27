@@ -54,7 +54,6 @@ class MealsViewController: UIViewController {
     }
     
     func getCategoriesAndMeals() {
-   
         ModelController.shared.getCategories { [self] categories, error in
             
             if let error = error {
@@ -101,7 +100,6 @@ class MealsViewController: UIViewController {
 
 // MARK: UICollectionViewDataSource
 extension MealsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right

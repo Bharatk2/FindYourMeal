@@ -19,11 +19,9 @@ class ModelController {
     
     // MARK: - Properties
     var categories: [Categories.CategoryRepresentation] = []
-    var categoryName: String?
     var meals: [MealRepresentation.MealRep] = []
     var imageCache = Cache<NSString, AnyObject>()
     var dataLoader: DataLoader?
-    let operationQueue = OperationQueue()
     static var shared = ModelController()
     
     // MARK: - Computed Properties
@@ -135,9 +133,10 @@ class ModelController {
                 return
             }
             /*
-             Using JSONSerialization here instead of Codable because the way the API structured its data isn't set up the best,
+             I tried using Codable but I had to trade it with JSONSerialization since I found it easier to build an array of ingredients and make logic statements.
+             because the way the API structured its data isn't set up the best,
              since there are many properties for ingredients and measures. JSONSerialization was the best way to make an array with if
-             statement to determine an existing value and convert it to an array.
+             statement to determine an existing value and convert it to an array of ingredients.
              */
             if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                let meals = json["meals"] as? [[String: Any]],

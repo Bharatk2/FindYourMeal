@@ -40,14 +40,11 @@ class MealDetailViewController: UIViewController {
         guard let meal = meal else { return }
         getMealDetails(meal: meal)
         setupScrollView()
-      
         view.backgroundColor = .white
 
     }
     
-
     //MARK: - Methods
-    
     func setupScrollView(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,12 +76,9 @@ class MealDetailViewController: UIViewController {
             contentViewCenterY,
             contentViewHeight
         ])
-        
-       
     }
     
     private func setUpSubviews() {
-        
         // Offer Image Setup
         mealImageView.contentMode = .scaleToFill
         mealImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -172,16 +166,5 @@ class MealDetailViewController: UIViewController {
         self.ingredients = mealDetail.ingredients
         
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
