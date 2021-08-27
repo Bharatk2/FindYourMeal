@@ -137,8 +137,16 @@ class MealDetailViewController: UIViewController {
         ingredientsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
         ingredientsButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
         ingredientsButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        
         ingredientsButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        ingredientsButton.addTarget(self, action: #selector(ingredientsViewController), for: .touchUpInside)
+    }
+    
+    @objc func ingredientsViewController() {
+        let detailVC = IngredientsTableViewController(nibName: nil, bundle: nil)
+            detailVC.ingredients = ingredients
+        navigationController?.pushViewController(detailVC, animated: true)
+        
     }
     
     func getMealDetails(meal: MealRepresentation.MealRep) {

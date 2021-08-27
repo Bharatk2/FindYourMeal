@@ -15,6 +15,12 @@ class IngredientsTableViewController: UITableViewController {
         super.viewDidLoad()
         setUpTableView()
         registerIngredientsTableViewCell()
+        self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
     
     func setUpTableView() {
@@ -39,12 +45,14 @@ class IngredientsTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        cell.ingredient = ingredients[indexPath.row]
+        cell.ingredientslabel.text = ingredients[indexPath.row].name
+        cell.measureLabel.text = ingredients[indexPath.row].quantity
 
         return cell
     }
     
-
-    
-
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                section: Int) -> String? {
+       return "Ingredients"
+    }
 }
