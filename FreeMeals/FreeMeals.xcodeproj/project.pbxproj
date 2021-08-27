@@ -22,6 +22,7 @@
 		C5C3D2FD26CE141B00CC7E77 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3D2FC26CE141B00CC7E77 /* DataLoader.swift */; };
 		C5C3D2FF26CE142600CC7E77 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3D2FE26CE142600CC7E77 /* Cache.swift */; };
 		C5E46B7326D98ED000138EA5 /* IngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E46B7226D98ED000138EA5 /* IngredientsTableViewController.swift */; };
+		C5E46B7526D9901900138EA5 /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E46B7426D9901900138EA5 /* IngredientsTableViewCell.swift */; };
 		D2B7B40426D05A5100A05F28 /* MealsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */; };
 		D2B7B40626D05C5C00A05F28 /* MealCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		C5C3D2FC26CE141B00CC7E77 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		C5C3D2FE26CE142600CC7E77 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C5E46B7226D98ED000138EA5 /* IngredientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewController.swift; sourceTree = "<group>"; };
+		C5E46B7426D9901900138EA5 /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
 		D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCollectionViewController.swift; sourceTree = "<group>"; };
 		D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 			children = (
 				D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */,
 				C53DD61026D1DD0100A68DD0 /* CenterViewFlowLayout.swift */,
+				C5E46B7426D9901900138EA5 /* IngredientsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5E46B7526D9901900138EA5 /* IngredientsTableViewCell.swift in Sources */,
 				C5C3D2FD26CE141B00CC7E77 /* DataLoader.swift in Sources */,
 				C53DD61126D1DD0100A68DD0 /* CenterViewFlowLayout.swift in Sources */,
 				C51EBC4826CB4C630011E8B5 /* AppDelegate.swift in Sources */,
