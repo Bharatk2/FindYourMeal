@@ -7,13 +7,15 @@
 
 import Foundation
 
-class Meals: Codable {
+/// The Struct ``Meals`` will access the meals array to decode, which is the second step of networking call implementation.
+struct Meals: Codable {
     var meals: [Meal]
     
     enum CodingKeys: String, CodingKey {
         case meals = "meals"
     }
-    class Meal: Codable {
+    
+    struct Meal: Codable {
         let mealName: String?
         let mealThumb: String?
         let id: String
@@ -24,7 +26,7 @@ class Meals: Codable {
             case id = "idMeal"
         }
         
-        required init(from decoder: Decoder) throws {
+         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: MealKeys.self)
             mealName = try container.decodeIfPresent(String.self, forKey: .mealName)
             mealThumb = try container.decodeIfPresent(String.self, forKey: .mealThumb)
@@ -34,7 +36,7 @@ class Meals: Codable {
     }
 }
 
-
+/// The Struct ``MealDetail`` is the third step for networking implementation once we have the existing meal id.
 struct MealDetail: Codable {
     let id: String
     let mealName: String
@@ -44,7 +46,7 @@ struct MealDetail: Codable {
     let ingredients: [MealIngredients]
 
 }
-
+/// The struct ``MealIngredients`` had to be separated from ``MealDetail`` struct. Because there are multiple meal ingredients and measurements that we need to handle.
 struct MealIngredients: Codable {
     let name: String
     let quantity: String
