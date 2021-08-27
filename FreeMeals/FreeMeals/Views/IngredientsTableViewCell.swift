@@ -8,6 +8,7 @@
 import UIKit
 
 class IngredientsTableViewCell: UITableViewCell {
+    
     var ingredientslabel = UILabel()
     var measureLabel = UILabel()
     var ingredient: MealIngredients? {
