@@ -36,6 +36,8 @@ class ModelController {
         self.dataLoader = dataLoader
     }
     
+    /// Networking method for categories
+    /// - Parameter completion: completion function has categories that will be assigned to an empty categories array if the call succeeds.
     func getCategories(completion: @escaping (Categories?, Error?) -> Void) {
         let requestURL = Endpoints.categories.url
         var request = URLRequest(url: requestURL)
@@ -58,13 +60,11 @@ class ModelController {
             }
             
             let categories = Categories.self
-            
+            // we know this place can throw an error so it's important to use do and catch in which we can identify what area of the app failed.
             do {
                 let categories = try self.decoder.decode(categories, from: data)
-                
-                
                 self.categories = categories.categories
-                
+                // if it succeeds it will populate the categories and show error nil
                 return completion(categories, nil)
             } catch {
                 return completion(nil, NetworkError.badData("there was an error decoding data"))
@@ -72,12 +72,17 @@ class ModelController {
         })
     }
     
+    /// Networking  method for meals by category
+    /// - Parameters:
+    ///   - category: Categories.Category is the struct
+    ///   - completion: completion function has meals which will be assinged to a meal array if fetching calls succeeds.
     func getMeals(category: String,completion: @escaping (Meals?, Error?) -> Void) {
         
         let requestURL = Endpoints.meals(category).url
         var request = URLRequest(url: requestURL)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
+        
         dataLoader?.loadData(from: request, completion: { data, response, error in
             if let response = response as? HTTPURLResponse {
                 NSLog("Server responded with: \(response.statusCode)")
@@ -93,13 +98,12 @@ class ModelController {
             }
             
             let meals = Meals.self
-            
+            // we know this place can throw an error so it's important to use do and catch in which we can identify what area of the app failed.
             do {
                 let meals = try self.decoder.decode(meals, from: data)
                 
                 self.meals = meals.meals
                 return completion(meals, nil)
-                
                 
             } catch {
                 return completion(nil, NetworkError.badData("there was an error decodig meal data "))
@@ -119,6 +123,7 @@ class ModelController {
         var request = URLRequest(url: requestURL)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
+        
         dataLoader?.loadData(from: request, completion: { data, response, error in
             if let response = response as? HTTPURLResponse {
                 NSLog("Server responded with: \(response.statusCode)")
