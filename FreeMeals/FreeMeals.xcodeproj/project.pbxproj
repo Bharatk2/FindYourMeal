@@ -21,9 +21,20 @@
 		C5C3D2FF26CE142600CC7E77 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3D2FE26CE142600CC7E77 /* Cache.swift */; };
 		C5E46B7326D98ED000138EA5 /* IngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E46B7226D98ED000138EA5 /* IngredientsTableViewController.swift */; };
 		C5E46B7526D9901900138EA5 /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E46B7426D9901900138EA5 /* IngredientsTableViewCell.swift */; };
+		C5E46B7D26D9C79900138EA5 /* FreeMealsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E46B7C26D9C79900138EA5 /* FreeMealsTests.swift */; };
 		D2B7B40426D05A5100A05F28 /* MealsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */; };
 		D2B7B40626D05C5C00A05F28 /* MealCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C5E46B7F26D9C79900138EA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C51EBC3C26CB4C630011E8B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C51EBC4326CB4C630011E8B5;
+			remoteInfo = FreeMeals;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C51EBC4426CB4C630011E8B5 /* FreeMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,12 +54,22 @@
 		C5C3D2FE26CE142600CC7E77 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C5E46B7226D98ED000138EA5 /* IngredientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewController.swift; sourceTree = "<group>"; };
 		C5E46B7426D9901900138EA5 /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
+		C5E46B7A26D9C79900138EA5 /* FreeMealsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreeMealsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E46B7C26D9C79900138EA5 /* FreeMealsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeMealsTests.swift; sourceTree = "<group>"; };
+		C5E46B7E26D9C79900138EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B7B40326D05A5100A05F28 /* MealsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCollectionViewController.swift; sourceTree = "<group>"; };
 		D2B7B40526D05C5C00A05F28 /* MealCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C51EBC4126CB4C630011E8B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5E46B7726D9C79900138EA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				C51EBC4626CB4C630011E8B5 /* FreeMeals */,
+				C5E46B7B26D9C79900138EA5 /* FreeMealsTests */,
 				C51EBC4526CB4C630011E8B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				C51EBC4426CB4C630011E8B5 /* FreeMeals.app */,
+				C5E46B7A26D9C79900138EA5 /* FreeMealsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +175,15 @@
 			path = "Extensions+Utilities";
 			sourceTree = "<group>";
 		};
+		C5E46B7B26D9C79900138EA5 /* FreeMealsTests */ = {
+			isa = PBXGroup;
+			children = (
+				C5E46B7C26D9C79900138EA5 /* FreeMealsTests.swift */,
+				C5E46B7E26D9C79900138EA5 /* Info.plist */,
+			);
+			path = FreeMealsTests;
+			sourceTree = "<group>";
+		};
 		C5ECAAB126CEB375009355F7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +223,24 @@
 			productReference = C51EBC4426CB4C630011E8B5 /* FreeMeals.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C5E46B7926D9C79900138EA5 /* FreeMealsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5E46B8326D9C79A00138EA5 /* Build configuration list for PBXNativeTarget "FreeMealsTests" */;
+			buildPhases = (
+				C5E46B7626D9C79900138EA5 /* Sources */,
+				C5E46B7726D9C79900138EA5 /* Frameworks */,
+				C5E46B7826D9C79900138EA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5E46B8026D9C79900138EA5 /* PBXTargetDependency */,
+			);
+			name = FreeMealsTests;
+			productName = FreeMealsTests;
+			productReference = C5E46B7A26D9C79900138EA5 /* FreeMealsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -202,6 +252,10 @@
 				TargetAttributes = {
 					C51EBC4326CB4C630011E8B5 = {
 						CreatedOnToolsVersion = 12.5;
+					};
+					C5E46B7926D9C79900138EA5 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = C51EBC4326CB4C630011E8B5;
 					};
 				};
 			};
@@ -219,6 +273,7 @@
 			projectRoot = "";
 			targets = (
 				C51EBC4326CB4C630011E8B5 /* FreeMeals */,
+				C5E46B7926D9C79900138EA5 /* FreeMealsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,6 +286,13 @@
 				C51EBC5426CB4C670011E8B5 /* LaunchScreen.storyboard in Resources */,
 				C51EBC5126CB4C670011E8B5 /* Assets.xcassets in Resources */,
 				C51EBC4F26CB4C630011E8B5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5E46B7826D9C79900138EA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +319,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C5E46B7626D9C79900138EA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5E46B7D26D9C79900138EA5 /* FreeMealsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C5E46B8026D9C79900138EA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C51EBC4326CB4C630011E8B5 /* FreeMeals */;
+			targetProxy = C5E46B7F26D9C79900138EA5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C51EBC4D26CB4C630011E8B5 /* Main.storyboard */ = {
@@ -433,6 +511,46 @@
 			};
 			name = Release;
 		};
+		C5E46B8126D9C79900138EA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDC2MPU893;
+				INFOPLIST_FILE = FreeMealsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bharat.FreeMealsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FreeMeals.app/FreeMeals";
+			};
+			name = Debug;
+		};
+		C5E46B8226D9C79900138EA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDC2MPU893;
+				INFOPLIST_FILE = FreeMealsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bharat.FreeMealsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FreeMeals.app/FreeMeals";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -450,6 +568,15 @@
 			buildConfigurations = (
 				C51EBC5926CB4C670011E8B5 /* Debug */,
 				C51EBC5A26CB4C670011E8B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5E46B8326D9C79A00138EA5 /* Build configuration list for PBXNativeTarget "FreeMealsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E46B8126D9C79900138EA5 /* Debug */,
+				C5E46B8226D9C79900138EA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

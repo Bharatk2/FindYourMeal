@@ -44,7 +44,6 @@ class IngredientsTableViewController: UITableViewController {
         return self.ingredients.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ingredientsCellIdentifier, for: indexPath) as? IngredientsTableViewCell else {
             return UITableViewCell()
