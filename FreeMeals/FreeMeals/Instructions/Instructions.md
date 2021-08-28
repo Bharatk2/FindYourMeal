@@ -11,7 +11,7 @@
 ## Model View Controller (MVC)
 
     1. Fetched all the Categories
-<img src= "https://ibb.co/28MDDMR" width="400" >
+<img src= "https://i.ibb.co/PTW77WJ/Screen-Shot-2021-08-27-at-5-50-58-PM.png" width="400" >
     
     2. Fetched meals by category.
 [Meals Endpoint](https://www.themealdb.com/api/json/v1/1/filter.php?c=CATEGORY)
