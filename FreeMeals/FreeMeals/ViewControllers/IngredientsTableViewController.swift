@@ -8,9 +8,12 @@
 import UIKit
 
 class IngredientsTableViewController: UITableViewController {
-    var ingredientsCellIdentifier = "ingredientsCell"
+    
+    //MARK: - Properties
+    private var ingredientsCellIdentifier = "ingredientsCell"
     var ingredients: [MealIngredients] = []
     
+    //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
@@ -23,13 +26,14 @@ class IngredientsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func setUpTableView() {
+    //MARK: - Methods
+    private func setUpTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         view.backgroundColor = .lightGray
         tableView.backgroundColor = .lightGray
     }
-    func registerIngredientsTableViewCell() {
+    private func registerIngredientsTableViewCell() {
         self.tableView.register(IngredientsTableViewCell.self, forCellReuseIdentifier: ingredientsCellIdentifier)
     }
     

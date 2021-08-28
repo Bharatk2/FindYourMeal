@@ -10,12 +10,12 @@ import UIKit
 class MealDetailViewController: UIViewController {
     
     //MARK: - Properties
-    var ingredientsButton = UIButton()
-    var mealImageView = UIImageView()
-    var mealNameLabel = UILabel()
-    var instructionTitle = UILabel()
-    var instructionsLabel = UILabel()
-    var ingredientsLabel = UILabel()
+    private var ingredientsButton = UIButton()
+    private var mealImageView = UIImageView()
+    private var mealNameLabel = UILabel()
+    private var instructionTitle = UILabel()
+    private var instructionsLabel = UILabel()
+    private var ingredientsLabel = UILabel()
     var meal: Meals.Meal?
     var ingredients: [MealIngredients] = []
     var mealDetail: MealDetail?
@@ -47,7 +47,7 @@ class MealDetailViewController: UIViewController {
     
     //MARK: - Methods
     /// ScrollView implementation was necessary because the instructions has long information for which the view controller needs to scroll.
-    func setupScrollView(){
+    private func setupScrollView(){
         // ScrollView setup
         let contentViewCenterY = contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
         contentViewCenterY.priority = .defaultLow
@@ -146,7 +146,7 @@ class MealDetailViewController: UIViewController {
         ingredientsButton.addTarget(self, action: #selector(ingredientsViewController), for: .touchUpInside)
     }
     
-    @objc func ingredientsViewController() {
+    @objc private func ingredientsViewController() {
         let detailVC = IngredientsTableViewController(nibName: nil, bundle: nil)
         detailVC.ingredients = ingredients
         navigationController?.pushViewController(detailVC, animated: true)
@@ -158,7 +158,7 @@ class MealDetailViewController: UIViewController {
     /// Fetching Call for meal details like instructions, ingredients, mealName, measurements.
     /// This method was important to call in the detail view controller so we can grab the existing meal id to fetch meal details
     /// - Parameter meal: Meals.Meal to get the id of the meal
-    func getMealDetails(meal: Meals.Meal) {
+    private func getMealDetails(meal: Meals.Meal) {
         ModelController.shared.getMealsById(mealID: meal.id) { mealDetail, error in
             if let error = error {
                 NSLog("There is an error fetching meal details: \(error)")
