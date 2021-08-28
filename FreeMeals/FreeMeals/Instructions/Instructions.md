@@ -4,28 +4,29 @@
 
     1. Integrated Core Data & created model representation to sync
         - Category Model -> Category: String, CategoryThumbNail: String
-        - Meal Model -> MealName: String, Category: String, Area: String, Instructions: String, MealThumbNail: String 
+        - Meal Model -> mealName: String, mealId: String, Area: String,MealThumbNail: String 
+        - Meal Detail Model -> mealID: String, mealName: String, Insructions: String, Ingredients: [Ingredients]
+        - Ingredients Model -> ingredientName: String, measureQuantity: String
     
 ## Model View Controller (MVC)
 
-
-    1. Fetch all the Categories
+    1. Fetched all the Categories
 [Category Endpoint](www.themealdb.com/api/json/v1/1/categories.php)
     
-    2. Fetch meals by category & detail.
+    2. Fetched meals by category.
 [Meals Endpoint](https://www.themealdb.com/api/json/v1/1/filter.php?c=CATEGORY)
-[Meal Detail Endpoint](https://www.themealdb.com/api/json/v1/1/lookup.php?i=MEAL_ID)
 
-    3. Fetch category & meal image 
+    3. Fetched meal details by meal id.
+[Meal Detail Endpoint](https://www.themealdb.com/api/json/v1/1/lookup.php?i=MEAL_ID)    
     
 ## View Controllers
 
-    1. Create TableViewController and add subheadings with meal category names with a category image at the right side.
-        - add meals according to it's category heading into the tableview row. 
-        - Sort it alphabetically 
-        
-    2. Create DetailViewController
-        -Add meal image, instructions, ingredients/measurements
+    1. Created CollectionViewController for categories and meals (Storyboard)
+        - added PickerViewController to select categories to fetch meals
+    2. Create DetailViewController for meal details (Programmatically)
+        - Added meal image, instructions
+    3. Created TableViewController for meal ingredients (Programmatically)
+        - Added ingredients and measures 
     
 
 

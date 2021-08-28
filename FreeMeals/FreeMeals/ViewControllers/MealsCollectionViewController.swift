@@ -30,13 +30,12 @@ class MealsViewController: UIViewController {
         pickerViewController.delegate = self
         pickerViewController.dataSource = self
         registerCollectionViewCell()
-        getCategoriesAndMeals()
+        getAllCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
-        
     }
     
     // MARK: - Helper Methods
@@ -53,7 +52,7 @@ class MealsViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
     }
     
-    private func getCategoriesAndMeals() {
+    private func getAllCategories() {
         // Weak self will help us to avoid retain cycle and free up memory.
         ModelController.shared.getCategories { [weak self] categories, error in
             
@@ -75,7 +74,9 @@ class MealsViewController: UIViewController {
         }
     }
     
-    private func fetchMeals(category: String) {
+    /// Fetch meals by category name method
+    /// - Parameter category: String -> implemented this method to use pickerview controller categories selection value
+    private func fetchMealsByCategory(category: String) {
         ModelController.shared.getMeals(category: category) { [weak self] meals, error in
             
             if let error = error {
@@ -147,7 +148,7 @@ extension MealsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedCat = categories[row].category
         print("selectedCat   \(selectedCat)")
-        self.fetchMeals(category: selectedCat)
+        self.fetchMealsByCategory(category: selectedCat)
         
     }
 }

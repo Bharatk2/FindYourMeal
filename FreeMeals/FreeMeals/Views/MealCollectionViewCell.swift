@@ -8,33 +8,40 @@
 import UIKit
 
 class MealCollectionViewCell: UICollectionViewCell {
-    var categoryNameLabel = UILabel()
-    var mealNameLabel = UILabel()
-    var productImage = UIImageView()
+    
+    //MARK: - Properties
+    private var categoryNameLabel = UILabel()
+    private var mealNameLabel = UILabel()
+    private var productImage = UIImageView()
+    
+    //MARK: - Computed Properties
     var meal: Meals.Meal? {
         didSet {
             updateViews()
         }
     }
+    
     //MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         handleConstraints()
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         handleConstraints()
     }
     
+    //MARK: Override Methods
     override func prepareForReuse() {
         self.categoryNameLabel.text = ""
         self.mealNameLabel.text = ""
         self.productImage.image = nil
     }
-    func handleConstraints() {
+    
+    //MARK: Helper Methods
+    private func handleConstraints() {
         //Content View Constraints
-        
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
         
@@ -45,7 +52,7 @@ class MealCollectionViewCell: UICollectionViewCell {
         backgroundView.contentMode = .left
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
-
+        
         //Background Constraints
         backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
         backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true
@@ -88,7 +95,7 @@ class MealCollectionViewCell: UICollectionViewCell {
         productImage.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -5).isActive = true
     }
     
-    func updateViews() {
+    private func updateViews() {
         guard let meal = meal,
               let imageURL = meal.mealThumb else { return }
         mealNameLabel.text = meal.mealName

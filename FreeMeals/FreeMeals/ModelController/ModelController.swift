@@ -20,8 +20,8 @@ class ModelController {
     // MARK: - Properties
     var categories: [Categories.Category] = []
     var meals: [Meals.Meal] = []
-    var imageCache = Cache<NSString, AnyObject>()
-    var dataLoader: DataLoader?
+    private var imageCache = Cache<NSString, AnyObject>()
+    private var dataLoader: DataLoader?
     static var shared = ModelController()
     
     // MARK: - Computed Properties

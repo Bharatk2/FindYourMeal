@@ -33,6 +33,7 @@ class IngredientsTableViewController: UITableViewController {
         view.backgroundColor = .lightGray
         tableView.backgroundColor = .lightGray
     }
+    
     private func registerIngredientsTableViewCell() {
         self.tableView.register(IngredientsTableViewCell.self, forCellReuseIdentifier: ingredientsCellIdentifier)
     }

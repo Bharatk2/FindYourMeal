@@ -15,7 +15,6 @@ class MealDetailViewController: UIViewController {
     private var mealNameLabel = UILabel()
     private var instructionTitle = UILabel()
     private var instructionsLabel = UILabel()
-    private var ingredientsLabel = UILabel()
     var meal: Meals.Meal?
     var ingredients: [MealIngredients] = []
     var mealDetail: MealDetail?

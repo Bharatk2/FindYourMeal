@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// The struct ``Categories`` will access categories array to decode all the categories in the networking implementation, this is the first step of the project.
 struct Categories: Codable {
     var categories: [Category]

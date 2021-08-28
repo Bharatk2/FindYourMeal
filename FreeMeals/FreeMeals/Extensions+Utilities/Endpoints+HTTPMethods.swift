@@ -7,12 +7,15 @@
 
 import Foundation
 
+/// the enum  ``Endpoints`` is used to store urls for networking call. Enum makes the values like url to be implemented in a cleaner way.
 enum Endpoints {
     static let baseURL = "https://www.themealdb.com/api/json/v1/1/"
     case categories
     case meals(String)
     case mealsDetail(String)
     
+    /// We are using switch for stringValue computed property by going through all the cases
+    /// so we can add specific parameters like category to the url so we can fetch we need.
     var stringValue: String {
         switch self {
         case .categories:
