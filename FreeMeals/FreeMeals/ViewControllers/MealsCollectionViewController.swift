@@ -7,18 +7,23 @@
 
 import UIKit
 
+/// I used storyboard for this part of the app, which is the meals view controller and programmatic constraints for the second part of the project which is meals detail view .
+/// This way I can show the both way of implementation.
 class MealsViewController: UIViewController {
     
-    let customCellIdentifier = "mealCellIdentifier"
-    
+    //MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pickerViewController: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    let categoryNames: [String] = []
-    var categories: [Categories.Category] = []
-    var meals: [Meals.Meal] = []
-    var horizontalMeals: CGFloat = 2
     
+    //MARK: - Properties
+    private let customCellIdentifier = "mealCellIdentifier"
+    private let categoryNames: [String] = []
+    private var categories: [Categories.Category] = []
+    private var meals: [Meals.Meal] = []
+    private var horizontalMeals: CGFloat = 2
+    
+    //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
@@ -26,35 +31,31 @@ class MealsViewController: UIViewController {
         pickerViewController.dataSource = self
         registerCollectionViewCell()
         getCategoriesAndMeals()
-        collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getCategoriesAndMeals()
-    }
- 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
         
     }
     
-    func setUpCollectionView() {
+    // MARK: - Helper Methods
+    private func setUpCollectionView() {
         view.backgroundColor = .lightGray
         collectionView.backgroundColor = .lightGray
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
     
-    func registerCollectionViewCell() {
+    private func registerCollectionViewCell() {
         collectionView.register(MealCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
         navigationItem.title = "Home"
         collectionView.backgroundColor = UIColor.white
     }
     
-    func getCategoriesAndMeals() {
-        ModelController.shared.getCategories { [self] categories, error in
+    private func getCategoriesAndMeals() {
+        // Weak self will help us to avoid retain cycle and free up memory.
+        ModelController.shared.getCategories { [weak self] categories, error in
             
             if let error = error {
                 NSLog("error in fetching categories: \(error)")
@@ -65,17 +66,17 @@ class MealsViewController: UIViewController {
                 return
             }
             
-            self.categories = categories.categories
+            self?.categories = categories.categories
             DispatchQueue.main.async {
-           
-                self.pickerViewController.reloadAllComponents()
-                self.collectionView.reloadData()
+                
+                self?.pickerViewController.reloadAllComponents()
+                self?.collectionView.reloadData()
             }
         }
     }
     
-    func fetchMeals(category: String) {
-        ModelController.shared.getMeals(category: category) { meals, error in
+    private func fetchMeals(category: String) {
+        ModelController.shared.getMeals(category: category) { [weak self] meals, error in
             
             if let error = error {
                 NSLog("error in fetching meals: \(error)")
@@ -87,10 +88,10 @@ class MealsViewController: UIViewController {
                 return
             }
             
-            self.meals = meals.meals
-           
+            self?.meals = meals.meals
+            
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self?.collectionView.reloadData()
             }
         }
         
@@ -147,6 +148,6 @@ extension MealsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         let selectedCat = categories[row].category
         print("selectedCat   \(selectedCat)")
         self.fetchMeals(category: selectedCat)
-       
+        
     }
 }

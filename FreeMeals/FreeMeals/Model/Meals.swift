@@ -26,7 +26,7 @@ struct Meals: Codable {
             case id = "idMeal"
         }
         
-         init(from decoder: Decoder) throws {
+        init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: MealKeys.self)
             mealName = try container.decodeIfPresent(String.self, forKey: .mealName)
             mealThumb = try container.decodeIfPresent(String.self, forKey: .mealThumb)
@@ -44,13 +44,13 @@ struct MealDetail: Codable {
     let instructions: String
     let mealThumb: String
     let ingredients: [MealIngredients]
-
+    
 }
-/// The struct ``MealIngredients`` had to be separated from ``MealDetail`` struct. Because there are multiple meal ingredients and measurements that we need to handle.
+/// The Struct ``MealIngredients`` had to be separated from ``MealDetail`` struct. Because there are multiple meal ingredients and measurements that we need to handle.
 struct MealIngredients: Codable {
     let name: String
     let quantity: String
 }
 
-    
+
 

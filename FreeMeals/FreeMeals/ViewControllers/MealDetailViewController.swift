@@ -22,17 +22,17 @@ class MealDetailViewController: UIViewController {
     
     //MARK: - Computed Properties.
     private lazy var scrollView: UIScrollView = {
-      let scrollView = UIScrollView()
-      scrollView.backgroundColor = .white
-      scrollView.translatesAutoresizingMaskIntoConstraints = false
-      return scrollView
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
     }()
-
+    
     private lazy var contentView: UIView = {
-      let contentView = UIView()
-      contentView.backgroundColor = .white
-      contentView.translatesAutoresizingMaskIntoConstraints = false
-      return contentView
+        let contentView = UIView()
+        contentView.backgroundColor = .white
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
     }()
     
     //MARK: - Override Methods
@@ -73,7 +73,7 @@ class MealDetailViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor)
         ])
-    
+        
         NSLayoutConstraint.activate([
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentViewCenterY,
@@ -148,7 +148,7 @@ class MealDetailViewController: UIViewController {
     
     @objc func ingredientsViewController() {
         let detailVC = IngredientsTableViewController(nibName: nil, bundle: nil)
-            detailVC.ingredients = ingredients
+        detailVC.ingredients = ingredients
         navigationController?.pushViewController(detailVC, animated: true)
         
     }

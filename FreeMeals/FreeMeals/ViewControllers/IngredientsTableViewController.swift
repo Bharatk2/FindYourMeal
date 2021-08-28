@@ -38,7 +38,7 @@ class IngredientsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.ingredients.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ingredientsCellIdentifier, for: indexPath) as? IngredientsTableViewCell else {
@@ -47,12 +47,12 @@ class IngredientsTableViewController: UITableViewController {
         
         cell.ingredientslabel.text = ingredients[indexPath.row].name
         cell.measureLabel.text = ingredients[indexPath.row].quantity
-
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection
                                 section: Int) -> String? {
-       return "Ingredients"
+        return "Ingredients"
     }
 }
