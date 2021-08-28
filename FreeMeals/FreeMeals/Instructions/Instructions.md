@@ -11,11 +11,8 @@
 ## Model View Controller (MVC)
 
     1. Fetched all the Categories
-<<<<<<< HEAD
 <img src= "https://i.ibb.co/PTW77WJ/Screen-Shot-2021-08-27-at-5-50-58-PM.png" width="400" >
-=======
 <img src= "https://i.ibb.co/PTW77WJ/Screen-Shot-2021-08-27-at-5-50-58-PM.png width="400" >
->>>>>>> 7830e44... Added 2 unit tests successfully
     
     2. Fetched meals by category.
 <img src= "https://i.ibb.co/fFPBM8J/Screen-Shot-2021-08-27-at-5-55-01-PM.png" width="400" >
