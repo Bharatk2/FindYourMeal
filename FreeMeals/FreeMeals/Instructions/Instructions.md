@@ -14,10 +14,13 @@
 <img src= "https://i.ibb.co/PTW77WJ/Screen-Shot-2021-08-27-at-5-50-58-PM.png" width="400" >
     
     2. Fetched meals by category.
-[Meals Endpoint](https://www.themealdb.com/api/json/v1/1/filter.php?c=CATEGORY)
+<img src= "https://i.ibb.co/fFPBM8J/Screen-Shot-2021-08-27-at-5-55-01-PM.png" width="400" >
 
     3. Fetched meal details by meal id.
-[Meal Detail Endpoint](https://www.themealdb.com/api/json/v1/1/lookup.php?i=MEAL_ID)    
+<img src= "https://i.ibb.co/9Gfrqh8/Screen-Shot-2021-08-27-at-5-56-37-PM.png" width="400" >
+
+<img src= "https://i.ibb.co/cbQ00Tt/Screen-Shot-2021-08-27-at-5-56-45-PM.png" width="400" >
+
     
 ## View Controllers
 
