@@ -1,5 +1,5 @@
 
-# Meals FetchRewards Challenge
+# Find Your Meal
 <br />
 The app is using TheMealDB API to be able to fetch categories, meals and meal details. 
 I have used Storyboard for one part of the app and programmatic constraints for the second. So I can show both parts of work.
