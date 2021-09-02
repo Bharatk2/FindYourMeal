@@ -18,7 +18,7 @@ I have used Storyboard for one part of the app and programmatic constraints for 
 - [x] Implemented 2 Unit Test methods.
 
 ## MVC Structure Steps
-[Click here!](https://github.com/Bharatk2/FetchRewardsiOSExercise/blob/main/FreeMeals/FreeMeals/Instructions/Instructions.md)
+[Click here!](https://github.com/Bharatk2/FindYourMeal/blob/main/FreeMeals/FreeMeals/Instructions/Instructions.md)
 
 ## Installation
 
